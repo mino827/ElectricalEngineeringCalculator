@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<calculations>
+    <calculation displayName="Wavelength from Frequency" methodName="wavelength" formulaImage="wavelength.jpg">
+        <description>
+            Calculates wavelength when frequency is known.
+
+            Inputs:
+                frequency: f (Hertz)
+
+            Output:
+                wavelength: w (Meters)
+        </description>
+        <input_parameters>
+            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+        </input_parameters>
+        <output outputName="Wavelength" outputUnitScope="METERS" />
+    </calculation>
+    <calculation displayName="Frequency from Wavelength" methodName="frequency_wl" formulaImage="frequency_wl.jpg">
+        <description>
+            Calculates frequency when wavelength is known.
+
+            Inputs:
+                wavelength: w (Meters)
+
+            Output:
+                frequency: f (Hertz)
+        </description>
+        <input_parameters>
+            <parameter paramName="Wavelength" inputUnitScope="METERS" />
+        </input_parameters>
+        <output outputName="Frequency" outputUnitScope="HERTZ" />
+    </calculation>
+    <calculation displayName="Frequency from Inductive Reactance" methodName="frequency_lxl" formulaImage="frequency_lxl.jpg">
+        <description>
+            Calculates frequency when inductance and inductive reactance are known.
+
+            Inputs:
+                inductance: L (Henries)
+                inductive_reactance: Xl (Ohms)
+
+            Output:
+                frequency: f (Hertz)
+        </description>
+        <input_parameters>
+            <parameter paramName="Inductance" inputUnitScope="HENRIES" />
+            <parameter paramName="Inductive Reactance" inputUnitScope="OHMS" />
+        </input_parameters>
+        <output outputName="Frequency" outputUnitScope="HERTZ" />
+    </calculation>
+    <calculation displayName="Frequency from Capacitive Reactance" methodName="frequency_cxc" formulaImage="frequency_cxc.jpg">
+        <description>
+            Calculates frequency when capacitance and capacitive reactance are known.
+
+            Inputs:
+                capacitance: C (Farads)
+                capacitive_reactance: Xc (Ohms)
+
+            Output:
+                frequency: f (Hertz)
+        </description>
+        <input_parameters>
+            <parameter paramName="Capacitance" inputUnitScope="FARADS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScope="OHMS" />
+        </input_parameters>
+        <output outputName="Frequency" outputUnitScope="HERTZ" />
+    </calculation>
+    <calculation displayName="Antenna Length (Quarter Wavelength)" methodName="antenna_length_qw" formulaImage="antenna_length_qw.jpg">
+        <description>
+            Calculates optimal quarter wave antenna length to receive input frequency. This is useful when
+            designing dipole radio antennae.
+
+            Inputs:
+                frequency: f (Hertz)
+
+            Output:
+                quarter_wavelength: w (Meters)
+        </description>
+        <input_parameters>
+            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+        </input_parameters>
+        <output outputName="Wavelength" outputUnitScope="METERS" />
+    </calculation>
+    <calculation displayName="Capacitance from Capacitive Reactance" methodName="capacitance_fxc" formulaImage="capacitance_fxc.jpg">
+        <description>
+            Calculates capacitance when frequency and capacitive reactance are known.
+
+            Inputs:
+                frequency: f (Hertz)
+                capacitive_reactance: Xc (Ohms)
+
+            Output:
+                capacitance: C (Farads)
+        </description>
+        <input_parameters>
+            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+            <parameter paramName="Capacitive Reactance" inputUnitScope="OHMS" />
+        </input_parameters>
+        <output outputName="Capacitance" outputUnitScope="FARADS" />
+    </calculation>
+    <calculation displayName="Inductance from Inductive Reactance" methodName="inductance_fxl" formulaImage="inductance_fxl.jpg">
+        <description>
+            Calculates inductance when frequency and inductive reactance are known.
+
+            Inputs:
+                frequency: f (Hertz)
+                inductive_reactance: Xl (Ohms)
+
+            Output:
+                inductance: L (Henries)
+        </description>
+        <input_parameters>
+            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+            <parameter paramName="Inductive Reactance" inputUnitScope="OHMS" />
+        </input_parameters>
+        <output outputName="Inductance" outputUnitScope="HENRIES" />
+    </calculation>
+    <calculation displayName="Inductive Back EMF" methodName="back_emf" formulaImage="back_emf.jpg">
+        <description>
+            Calculates back EMF when current stops flowing in an inductor. Large voltages tend to get produced which can damage components unless sufficient protective diodes are used in the circuits.
+
+            Inputs:
+                inductance: L (Henries)
+                current_t1: It1 (Amperes) - Current at Time 1
+                current_t2: It2 (Amperes) - Current at Time 2
+                time: s (Seconds) - Elapsed from T1 to T2
+
+            Output:
+                back_emf: V (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Inductance" inputUnitScope="HENRIES" />
+            <parameter paramName="Current_t1" inputUnitScope="AMPERES" />
+            <parameter paramName="Current_t2" inputUnitScope="AMPERES" />
+            <parameter paramName="Time" inputUnitScope="SECONDS" />
+        </input_parameters>
+        <output outputName="Back EMF" outputUnitScope="VOLTS" />
+    </calculation>
+    <calculation displayName="Inductive Reactance from Inductance" methodName="reactance_inductive_fl" formulaImage="reactance_inductive_fl.jpg">
+        <description>
+            Calculates inductive reactance when frequency and inductance are known.
+
+            Inputs:
+                frequency: f (Hertz)
+                inductance: L (Henries)
+
+            Output:
+                inductive_reactance: Xl (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Inductance" inputUnitScope="HENRIES" />
+            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+        </input_parameters>
+        <output outputName="Inductive Reactance" outputUnitScope="OHMS" />
+    </calculation>
+    <calculation displayName="Capacitive Reactance from Capacitance" methodName="reactance_capacitive_fc" formulaImage="reactance_capacitive_fc.jpg">
+        <description>
+            Calculates capacitive reactance when frequency and capacitance are known.
+
+            Inputs:
+                frequency: f (Hertz)
+                capacitance: C (Farads)
+
+            Output:
+                capacitive_reactance: Xc (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Capacitance" inputUnitScope="FARADS" />
+            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+        </input_parameters>
+        <output outputName="Capacitive Reactance" outputUnitScope="OHMS" />
+    </calculation>
+    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+        <description>
+            Calculates capacitive reactance when impedance and resistance are known.
+
+            Inputs:
+                impedance: Z (Ohms)
+                resistance: R (Ohms)
+
+            Output:
+                capacitive_reactance: Xc (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Impedance" inputUnitScope="OHMS" />
+            <parameter paramName="Resistance" inputUnitScope="OHMS" />
+        </input_parameters>
+        <output outputName="Capacitive Reactance" outputUnitScope="OHMS" />
+    </calculation>
+</calculations>
