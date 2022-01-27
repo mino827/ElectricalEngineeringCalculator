@@ -5,64 +5,64 @@
             Calculates wavelength when frequency is known.
 
             Inputs:
-                frequency: f (Hertz)
+            *   frequency: f (Hertz)
 
             Output:
-                wavelength: w (Meters)
+            *   wavelength: w (Meters)
         </description>
         <input_parameters>
-            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+            <parameter paramName="Frequency" inputUnitScale="HERTZ" />
         </input_parameters>
-        <output outputName="Wavelength" outputUnitScope="METERS" />
+        <output outputName="Wavelength" outputUnitScale="METERS" />
     </calculation>
     <calculation displayName="Frequency from Wavelength" methodName="frequency_wl" formulaImage="frequency_wl.jpg">
         <description>
             Calculates frequency when wavelength is known.
 
             Inputs:
-                wavelength: w (Meters)
+            *   wavelength: w (Meters)
 
             Output:
-                frequency: f (Hertz)
+            *   frequency: f (Hertz)
         </description>
         <input_parameters>
-            <parameter paramName="Wavelength" inputUnitScope="METERS" />
+            <parameter paramName="Wavelength" inputUnitScale="METERS" />
         </input_parameters>
-        <output outputName="Frequency" outputUnitScope="HERTZ" />
+        <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
     <calculation displayName="Frequency from Inductive Reactance" methodName="frequency_lxl" formulaImage="frequency_lxl.jpg">
         <description>
             Calculates frequency when inductance and inductive reactance are known.
 
             Inputs:
-                inductance: L (Henries)
-                inductive_reactance: Xl (Ohms)
+            *   inductance: L (Henries)
+            *   inductive_reactance: Xl (Ohms)
 
             Output:
-                frequency: f (Hertz)
+            *   frequency: f (Hertz)
         </description>
         <input_parameters>
-            <parameter paramName="Inductance" inputUnitScope="HENRIES" />
-            <parameter paramName="Inductive Reactance" inputUnitScope="OHMS" />
+            <parameter paramName="Inductance" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductive Reactance" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Frequency" outputUnitScope="HERTZ" />
+        <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
     <calculation displayName="Frequency from Capacitive Reactance" methodName="frequency_cxc" formulaImage="frequency_cxc.jpg">
         <description>
             Calculates frequency when capacitance and capacitive reactance are known.
 
             Inputs:
-                capacitance: C (Farads)
-                capacitive_reactance: Xc (Ohms)
+            *   capacitance: C (Farads)
+            *   capacitive_reactance: Xc (Ohms)
 
             Output:
-                frequency: f (Hertz)
+            *   frequency: f (Hertz)
         </description>
         <input_parameters>
-            <parameter paramName="Capacitance" inputUnitScope="FARADS" />
-            <parameter paramName="Capacitive Reactance" inputUnitScope="OHMS" />
+            <parameter paramName="Capacitance" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Frequency" outputUnitScope="HERTZ" />
+        <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
     <calculation displayName="Antenna Length (Quarter Wavelength)" methodName="antenna_length_qw" formulaImage="antenna_length_qw.jpg">
         <description>
@@ -70,120 +70,508 @@
             designing dipole radio antennae.
 
             Inputs:
-                frequency: f (Hertz)
+            *   frequency: f (Hertz)
 
             Output:
-                quarter_wavelength: w (Meters)
+            *   quarter_wavelength: w (Meters)
         </description>
         <input_parameters>
-            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+            <parameter paramName="Frequency" inputUnitScale="HERTZ" />
         </input_parameters>
-        <output outputName="Wavelength" outputUnitScope="METERS" />
+        <output outputName="Wavelength" outputUnitScale="METERS" />
     </calculation>
     <calculation displayName="Capacitance from Capacitive Reactance" methodName="capacitance_fxc" formulaImage="capacitance_fxc.jpg">
         <description>
             Calculates capacitance when frequency and capacitive reactance are known.
 
             Inputs:
-                frequency: f (Hertz)
-                capacitive_reactance: Xc (Ohms)
+            *   frequency: f (Hertz)
+            *   capacitive_reactance: Xc (Ohms)
 
             Output:
-                capacitance: C (Farads)
+            *   capacitance: C (Farads)
         </description>
         <input_parameters>
-            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
-            <parameter paramName="Capacitive Reactance" inputUnitScope="OHMS" />
+            <parameter paramName="Frequency" inputUnitScale="HERTZ" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Capacitance" outputUnitScope="FARADS" />
+        <output outputName="Capacitance" outputUnitScale="FARADS" />
     </calculation>
     <calculation displayName="Inductance from Inductive Reactance" methodName="inductance_fxl" formulaImage="inductance_fxl.jpg">
         <description>
             Calculates inductance when frequency and inductive reactance are known.
 
             Inputs:
-                frequency: f (Hertz)
-                inductive_reactance: Xl (Ohms)
+            *   frequency: f (Hertz)
+            *   inductive_reactance: Xl (Ohms)
 
             Output:
-                inductance: L (Henries)
+            *   inductance: L (Henries)
         </description>
         <input_parameters>
-            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
-            <parameter paramName="Inductive Reactance" inputUnitScope="OHMS" />
+            <parameter paramName="Frequency" inputUnitScale="HERTZ" />
+            <parameter paramName="Inductive Reactance" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Inductance" outputUnitScope="HENRIES" />
+        <output outputName="Inductance" outputUnitScale="HENRIES" />
     </calculation>
     <calculation displayName="Inductive Back EMF" methodName="back_emf" formulaImage="back_emf.jpg">
         <description>
             Calculates back EMF when current stops flowing in an inductor. Large voltages tend to get produced which can damage components unless sufficient protective diodes are used in the circuits.
 
             Inputs:
-                inductance: L (Henries)
-                current_t1: It1 (Amperes) - Current at Time 1
-                current_t2: It2 (Amperes) - Current at Time 2
-                time: s (Seconds) - Elapsed from T1 to T2
+            *   inductance: L (Henries)
+            *   current_t1: It1 (Amperes) - Current at T1
+            *   current_t2: It2 (Amperes) - Current at T2
+            *   time: s (Seconds) - Elapsed time between T1 and T2
 
             Output:
-                back_emf: V (Volts)
+            *   back_emf: V (Volts)
         </description>
         <input_parameters>
-            <parameter paramName="Inductance" inputUnitScope="HENRIES" />
-            <parameter paramName="Current_t1" inputUnitScope="AMPERES" />
-            <parameter paramName="Current_t2" inputUnitScope="AMPERES" />
-            <parameter paramName="Time" inputUnitScope="SECONDS" />
+            <parameter paramName="Inductance" inputUnitScale="HENRIES" />
+            <parameter paramName="Current_t1" inputUnitScale="AMPERES" />
+            <parameter paramName="Current_t2" inputUnitScale="AMPERES" />
+            <parameter paramName="Time" inputUnitScale="SECONDS" />
         </input_parameters>
-        <output outputName="Back EMF" outputUnitScope="VOLTS" />
+        <output outputName="Back EMF" outputUnitScale="VOLTS" />
     </calculation>
     <calculation displayName="Inductive Reactance from Inductance" methodName="reactance_inductive_fl" formulaImage="reactance_inductive_fl.jpg">
         <description>
             Calculates inductive reactance when frequency and inductance are known.
 
             Inputs:
-                frequency: f (Hertz)
-                inductance: L (Henries)
+            *   frequency: f (Hertz)
+            *   inductance: L (Henries)
 
             Output:
-                inductive_reactance: Xl (Ohms)
+            *   inductive_reactance: Xl (Ohms)
         </description>
         <input_parameters>
-            <parameter paramName="Inductance" inputUnitScope="HENRIES" />
-            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+            <parameter paramName="Inductance" inputUnitScale="HENRIES" />
+            <parameter paramName="Frequency" inputUnitScale="HERTZ" />
         </input_parameters>
-        <output outputName="Inductive Reactance" outputUnitScope="OHMS" />
+        <output outputName="Inductive Reactance" outputUnitScale="OHMS" />
     </calculation>
     <calculation displayName="Capacitive Reactance from Capacitance" methodName="reactance_capacitive_fc" formulaImage="reactance_capacitive_fc.jpg">
         <description>
             Calculates capacitive reactance when frequency and capacitance are known.
 
             Inputs:
-                frequency: f (Hertz)
-                capacitance: C (Farads)
+            *   frequency: f (Hertz)
+            *   capacitance: C (Farads)
 
             Output:
-                capacitive_reactance: Xc (Ohms)
+            *   capacitive_reactance: Xc (Ohms)
         </description>
         <input_parameters>
-            <parameter paramName="Capacitance" inputUnitScope="FARADS" />
-            <parameter paramName="Frequency" inputUnitScope="HERTZ" />
+            <parameter paramName="Capacitance" inputUnitScale="FARADS" />
+            <parameter paramName="Frequency" inputUnitScale="HERTZ" />
         </input_parameters>
-        <output outputName="Capacitive Reactance" outputUnitScope="OHMS" />
+        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
     </calculation>
     <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
         <description>
             Calculates capacitive reactance when impedance and resistance are known.
 
             Inputs:
-                impedance: Z (Ohms)
-                resistance: R (Ohms)
+            *   impedance: Z (Ohms)
+            *   resistance: R (Ohms)
 
             Output:
-                capacitive_reactance: Xc (Ohms)
+            *   capacitive_reactance: Xc (Ohms)
         </description>
         <input_parameters>
-            <parameter paramName="Impedance" inputUnitScope="OHMS" />
-            <parameter paramName="Resistance" inputUnitScope="OHMS" />
+            <parameter paramName="Impedance" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Capacitive Reactance" outputUnitScope="OHMS" />
+        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Power from Voltage and Resistance" methodName="power_er" formulaImage="power_er.jpg">
+        <description>
+            Calculates power based on voltage and resistance values using Ohm's Law.
+
+            Inputs:
+            *   voltage: V (Volts)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   power: P (Watts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Voltage" inputUnitScale="VOLTS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Power" outputUnitScale="WATTS" />
+    </calculation>
+    <calculation displayName="Power from Current and Voltage" methodName="power_ie" formulaImage="power_ie.jpg">
+        <description>
+            Calculates power based on current and voltage values using Ohm's Law.
+
+            Inputs:
+            *   current: I (Amperes)
+            *   voltage: V (Volts)
+
+            Output:
+            *   power: P (Watts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Current" inputUnitScale="AMPERES" />
+            <parameter paramName="Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Power" outputUnitScale="WATTS" />
+    </calculation>
+    <calculation displayName="Power from Current and Resistance" methodName="power_ir" formulaImage="power_ir.jpg">
+        <description>
+            Calculates power based on current and resistance values using Ohm's Law. P
+
+            Inputs:
+            *   current: I (Amperes)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   power: P (Watts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Current" inputUnitScale="AMPERES" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Power" outputUnitScale="WATTS" />
+    </calculation>
+    <calculation displayName="Current from Power and Voltage" methodName="current_pe" formulaImage="current_pe.jpg">
+        <description>
+            Calculates current based on power and voltage values using Ohm's Law.
+
+            Inputs:
+            *   power: P (Watts)
+            *   voltage: V (Volts)
+
+            Output:
+            *   current: I (Amperes)
+        </description>
+        <input_parameters>
+            <parameter paramName="Power" inputUnitScale="WATTS" />
+            <parameter paramName="Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Current" outputUnitScale="AMPERES" />
+    </calculation>
+    <calculation displayName="Current from Power and Resistance" methodName="current_pr" formulaImage="current_pr.jpg">
+        <description>
+            Calculates current based on power and resistance values using Ohm's Law.
+
+            Inputs:
+            *   power: P (Watts)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   current: I (Amperes)
+        </description>
+        <input_parameters>
+            <parameter paramName="Power" inputUnitScale="WATTS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Current" outputUnitScale="AMPERES" />
+    </calculation>
+    <calculation displayName="Current from Voltage and Resistance" methodName="current_er" formulaImage="current_er.jpg">
+        <description>
+            Calculates current based on voltage and resistance values using Ohm's Law.
+
+            Inputs:
+            *   voltage: V (Volts)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   current: I (Amperes)
+        </description>
+        <input_parameters>
+            <parameter paramName="Voltage" inputUnitScale="VOLTS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Current" outputUnitScale="AMPERES" />
+    </calculation>
+    <calculation displayName="Voltage from Power and Current" methodName="voltage_pi" formulaImage="voltage_pi.jpg">
+        <description>
+            Calculates voltage based on power and current values using Ohm's Law.
+
+            Inputs:
+            *   power: P (Watts)
+            *   current: I (Amperes)
+
+            Output:
+            *   voltage: V (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Power" inputUnitScale="WATTS" />
+            <parameter paramName="Current" inputUnitScale="AMPERES" />
+        </input_parameters>
+        <output outputName="Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Voltage from Power and Resistance" methodName="voltage_pr" formulaImage="voltage_pr.jpg">
+        <description>
+            Calculates voltage based on power and resistance values using Ohm's Law.
+
+            Inputs:
+            *   power: P (Watts)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   voltage: V (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Power" inputUnitScale="WATTS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Voltage from Current and Resistance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+        <description>
+            Calculates voltage based on current and resistance values using Ohm's Law.
+
+            Inputs:
+            *   current: I (Amperes)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   voltage: V (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Current" inputUnitScale="AMPERES" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Resistance from Power and Voltage" methodName="resistance_pe" formulaImage="resistance_pe.jpg">
+        <description>
+            Calculates resistance based on power and voltage values using Ohm's Law.
+
+            Inputs:
+            *   power: P (Watts)
+            *   voltage: V (Volts)
+
+            Output:
+            *   resistance: R (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Power" inputUnitScale="WATTS" />
+            <parameter paramName="Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Resistance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Resistance from Power and Current" methodName="resistance_pi" formulaImage="resistance_pi.jpg">
+        <description>
+            Calculates resistance based on power and current values using Ohm's Law.
+
+            Inputs:
+            *   power: P (Watts)
+            *   current: I (Amperes)
+
+            Output:
+            *   resistance: R (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Power" inputUnitScale="WATTS" />
+            <parameter paramName="Current" inputUnitScale="AMPERES" />
+        </input_parameters>
+        <output outputName="Resistance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Resistance from Current and Voltage" methodName="resistance_ie" formulaImage="resistance_ie.jpg">
+        <description>
+            Calculates resistance based on current and voltage values using Ohm's Law.
+
+            Inputs:
+            *   current: I (Amperes)
+            *   voltage: V (Volts)
+
+            Output:
+            *   resistance: R (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Current" inputUnitScale="AMPERES" />
+            <parameter paramName="Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Resistance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Voltage Divider from Resistance" methodName="voltage_divider_r" formulaImage="voltage_divider_r.jpg">
+        <description>
+            Calculates output voltage when two resistors are used as a voltage divider. The output voltage will always be lower than the input voltage.
+
+            Inputs:
+            *   voltage_in: Vin (Volts)
+            *   resistance_1: R1 (Ohms)
+            *   resistance_2: R2 (Ohms)
+
+            Output:
+            *   voltage_out: Vout (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Voltage IN" inputUnitScale="VOLTS" />
+            <parameter paramName="Resistance 1" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 2" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Voltage OUT" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Total Current in a Series Circuit" methodName="total_series_current" formulaImage="total_series_current.jpg">
+        <description>
+            Takes a tuple of current measurements in a series circuit and returns the total current.
+
+            Inputs:
+            *   currents: I (Amperes)
+
+            Output:
+            *   total_current: I (Amperes)
+        </description>
+        <input_parameters>
+            <parameter paramName="Current 1" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 2" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 3" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 4" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 5" inputUnitScale="AMPERES" />
+        </input_parameters>
+        <output outputName="Total Current" outputUnitScale="AMPERES" />
+    </calculation>
+    <calculation displayName="Total Resistance in a Series Circuit" methodName="total_series_resistance" formulaImage="total_series_resistance.jpg">
+        <description>
+            Takes a tuple of resistance measurements in a series circuit and returns the total resistance.
+
+            Inputs:
+            *   resistances: R (Ohms)
+
+            Output:
+            *   total_resistance: R (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Resistance 1" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 2" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 3" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 4" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 5" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Total Resistance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Total Voltage in a Series Circuit" methodName="total_series_voltage" formulaImage="total_series_voltage.jpg">
+        <description>
+             Takes a tuple of voltage measurements in a series circuit and returns the total voltage.
+
+            Inputs:
+            *   voltages: V (Volts)
+
+            Output:
+            *   total_voltage: V (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Voltage 1" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 2" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 3" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 4" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 5" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Total Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Total Capacitance in a Series Circuit" methodName="total_series_capacitance" formulaImage="total_series_capacitance.jpg">
+        <description>
+            Takes a tuple of capacitance measurements in a series circuit and returns the total capacitance.
+
+            Inputs:
+            *   capacitances: C (Farads)
+
+            Output:
+            *   total_capacitance: C (Farads)
+        </description>
+        <input_parameters>
+            <parameter paramName="Capacitance 1" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 2" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 3" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 4" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 5" inputUnitScale="FARADS" />
+        </input_parameters>
+        <output outputName="Total Capacitance" outputUnitScale="FARADS" />
+    </calculation>
+    <calculation displayName="Total Inductance in a Series Circuit" methodName="total_series_inductance" formulaImage="total_series_inductance.jpg">
+        <description>
+            Takes a tuple of inductance measurements in a series circuit and returns the total inductance.
+
+            Inputs:
+            *   inductances: L (Henries)
+
+            Output:
+            *   total_inductance: L (Henries)
+        </description>
+        <input_parameters>
+            <parameter paramName="Inductance 1" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 2" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 3" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 4" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 5" inputUnitScale="HENRIES" />
+        </input_parameters>
+        <output outputName="Total Inductance" outputUnitScale="HENRIES" />
+    </calculation>
+    <calculation displayName="Total Current in a Parallel Circuit" methodName="total_parallel_current" formulaImage="total_parallel_current.jpg">
+        <description>
+            Takes a tuple of current measurements in a parallel circuit and returns the total current.
+
+            Inputs:
+            *   currents: I (Amperes)
+
+            Output:
+            *   total_current: I (Amperes)
+        </description>
+        <input_parameters>
+            <parameter paramName="Current 1" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 2" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 3" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 4" inputUnitScale="AMPERES" />
+            <parameter paramName="Current 5" inputUnitScale="AMPERES" />
+        </input_parameters>
+        <output outputName="Total Current" outputUnitScale="AMPERES" />
+    </calculation>
+    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+        <description>
+            Calculates capacitive reactance when impedance and resistance are known.
+
+            Inputs:
+            *   impedance: Z (Ohms)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   capacitive_reactance: Xc (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Impedance" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+        <description>
+            Calculates capacitive reactance when impedance and resistance are known.
+
+            Inputs:
+            *   impedance: Z (Ohms)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   capacitive_reactance: Xc (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Impedance" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+        <description>
+            Calculates capacitive reactance when impedance and resistance are known.
+
+            Inputs:
+            *   impedance: Z (Ohms)
+            *   resistance: R (Ohms)
+
+            Output:
+            *   capacitive_reactance: Xc (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Impedance" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
     </calculation>
 </calculations>
