@@ -523,55 +523,441 @@
         </input_parameters>
         <output outputName="Total Current" outputUnitScale="AMPERES" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+    <calculation displayName="Total Resistance in a Parallel Circuit" methodName="total_parallel_resistance" formulaImage="total_parallel_resistance.jpg">
         <description>
-            Calculates capacitive reactance when impedance and resistance are known.
+            Takes a tuple of resistance measurements in a parallel circuit and returns the total resistance.
 
             Inputs:
-            *   impedance: Z (Ohms)
-            *   resistance: R (Ohms)
+            *   resistances: R (Ohms)
 
             Output:
-            *   capacitive_reactance: Xc (Ohms)
+            *   total_resistance: R (Ohms)
         </description>
         <input_parameters>
-            <parameter paramName="Impedance" inputUnitScale="OHMS" />
-            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 1" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 2" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 3" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 4" inputUnitScale="OHMS" />
+            <parameter paramName="Resistance 5" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
+        <output outputName="Total Resistance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+    <calculation displayName="Total Voltage in a Parallel Circuit" methodName="total_parallel_voltage" formulaImage="total_parallel_voltage.jpg">
         <description>
-            Calculates capacitive reactance when impedance and resistance are known.
+            Takes a tuple of voltage measurements in a parallel circuit and returns the total voltage.
 
             Inputs:
-            *   impedance: Z (Ohms)
-            *   resistance: R (Ohms)
+            *   voltages: V (Volts)
 
             Output:
-            *   capacitive_reactance: Xc (Ohms)
+            *   total_voltage: V (Volts)
         </description>
         <input_parameters>
-            <parameter paramName="Impedance" inputUnitScale="OHMS" />
-            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+            <parameter paramName="Voltage 1" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 2" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 3" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 4" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage 5" inputUnitScale="VOLTS" />
         </input_parameters>
-        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
+        <output outputName="Total Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+    <calculation displayName="Total Capacitance in a Parallel Circuit" methodName="total_parallel_capacitance" formulaImage="total_parallel_capacitance.jpg">
         <description>
-            Calculates capacitive reactance when impedance and resistance are known.
+            Takes a tuple of capacitance measurements in a parallel circuit and returns the total capacitance.
 
             Inputs:
-            *   impedance: Z (Ohms)
-            *   resistance: R (Ohms)
+            *   capacitances: C (Farads)
 
             Output:
-            *   capacitive_reactance: Xc (Ohms)
+            *   total_capacitance: C (Farads)
         </description>
         <input_parameters>
-            <parameter paramName="Impedance" inputUnitScale="OHMS" />
-            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+            <parameter paramName="Capacitance 1" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 2" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 3" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 4" inputUnitScale="FARADS" />
+            <parameter paramName="Capacitance 5" inputUnitScale="FARADS" />
         </input_parameters>
-        <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
+        <output outputName="Total Capacitance" outputUnitScale="FARADS" />
+    </calculation>
+    <calculation displayName="Total Inductance in a Parallel Circuit" methodName="total_parallel_inductance" formulaImage="total_parallel_inductance.jpg">
+        <description>
+            Takes a tuple of inductance measurements in a parallel circuit and returns the total inductance.
+
+            Inputs:
+            *   inductances: L (Henries)
+
+            Output:
+            *   total_inductance: L (Henries)
+        </description>
+        <input_parameters>
+            <parameter paramName="Inductance 1" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 2" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 3" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 4" inputUnitScale="HENRIES" />
+            <parameter paramName="Inductance 5" inputUnitScale="HENRIES" />
+        </input_parameters>
+        <output outputName="Total Inductance" outputUnitScale="HENRIES" />
+    </calculation>
+    <calculation displayName="RMS Voltage from Peak Voltage (SINE)" methodName="voltage_rms_from_peak" formulaImage="voltage_rms_from_peak.jpg">
+        <description>
+            Calculates rms voltage from peak voltage for AC sine waves.
+
+            Input:
+            *   peak_voltage: Vp (Volts)
+
+            Output:
+            *   rms_voltage: Vrms (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="RMS Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_rms_from_peak_to_peak" formulaImage="voltage_rms_from_peak_to_peak.jpg">
+        <description>
+            Calculates rms voltage from peak to peak voltage for AC sine waves.
+
+            Input:
+            *   peak_to_peak_voltage: Vp-p (Volts)
+
+            Output:
+            *   rms_voltage: Vrms (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak-to-Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="RMS Voltage from Average Voltage (SINE)" methodName="voltage_rms_from_average" formulaImage="voltage_rms_from_average.jpg">
+        <description>
+            Calculates rms voltage from average voltage for AC sine waves.
+
+            Input:
+            *   average_voltage: Vav (Volts)
+
+            Output:
+            *   rms_voltage: Vrms (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Average Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Average Voltage from Peak Voltage (SINE)" methodName="voltage_average_from_peak" formulaImage="voltage_average_from_peak.jpg">
+        <description>
+            Calculates average voltage from peak voltage for AC sine waves.
+
+            Input:
+            *   peak_voltage: Vp (Volts)
+
+            Output:
+            *   average_voltage: Vav (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Average Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Average Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_average_from_peak_to_peak" formulaImage="voltage_average_from_peak_to_peak.jpg">
+        <description>
+            Calculates average voltage from peak to peak voltage for AC sine waves.
+
+            Input:
+            *   peak_to_peak_voltage: Vp-p (Volts)
+
+            Output:
+            *   average_voltage: Vav (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak-to-Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Average Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Average Voltage from RMS Voltage (SINE)" methodName="voltage_average_from_rms" formulaImage="voltage_average_from_rms.jpg">
+        <description>
+            Calculates average voltage from rms voltage for AC sine waves.
+
+            Input:
+            *   rms_voltage: Vrms (Volts)
+
+            Output:
+            *   average_voltage: Vav (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="RMS Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Average Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Peak Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_peak_from_peak_to_peak" formulaImage="voltage_peak_from_peak_to_peak.jpg">
+        <description>
+            Calculates peak voltage from peak to peak voltage for AC sine waves.
+
+            Input:
+            *   peak_to_peak_voltage: Vp-p (Volts)
+
+            Output:
+            *   peak_voltage: Vp (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak-to-Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Peak Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_from_rms" formulaImage="voltage_peak_from_rms.jpg">
+        <description>
+            Calculates peak voltage from rms voltage for AC sine waves.
+
+            Input:
+            *   rms_voltage: Vrms (Volts)
+
+            Output:
+            *   peak_voltage: Vp (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_from_average" formulaImage="voltage_peak_from_average.jpg">
+        <description>
+            Calculates peak voltage from average voltage for AC sine waves.
+
+            Input:
+            *   average_voltage: Vav (Volts)
+
+            Output:
+            *   peak_voltage: Vp (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Average Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Peak-to-Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_to_peak_from_average" formulaImage="voltage_peak_to_peak_from_average.jpg">
+        <description>
+            Calculates peak to peak voltage from average voltage for AC sine waves.
+
+            Input:
+            *   average_voltage: Vav (Volts)
+
+            Output:
+            *   peak_to_peak_voltage: Vp-p (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Average Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Peak-to-Peak Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Peak-to-Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_to_peak_from_rms" formulaImage="voltage_peak_to_peak_from_rms.jpg">
+        <description>
+            Calculates peak to peak voltage from rms voltage for AC sine waves.
+
+            Input:
+            *   rms_voltage: Vrms (Volts)
+
+            Output:
+            *   peak_to_peak_voltage: Vp-p (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="RMS Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Peak-to-Peak Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Peak-to-Peak Voltage from Peak Voltage (SINE)" methodName="voltage_peak_to_peak_from_peak" formulaImage="voltage_peak_to_peak_from_peak.jpg">
+        <description>
+            Calculates peak to peak voltage from peak voltage for AC sine waves.
+
+            Input:
+            *   peak_voltage: Vp (Volts)
+
+            Output:
+            *   peak_to_peak_voltage: Vp-p (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Peak-to-Peak Voltage" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Voltage Divider from Capacitance" methodName="voltage_divider_c" formulaImage="voltage_divider_c.jpg">
+        <description>
+            Calculates output voltage when a capacitor is used as a voltage divider.
+
+            Inputs:
+            *   voltage_in: Vin (Volts)
+            *   impedance: Z (Ohms)
+            *   capacitive_reactance: Xc (Ohms)
+
+            Output:
+            *   voltage_out: Vout (Volts)
+        </description>
+        <input_parameters>
+            <parameter paramName="Voltage IN" inputUnitScale="VOLTS" />
+            <parameter paramName="Impedance" inputUnitScale="OHMS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Voltage OUT" outputUnitScale="VOLTS" />
+    </calculation>
+    <calculation displayName="Impedance from an RC Circuit" methodName="impedance_rc" formulaImage="impedance_rc.jpg">
+        <description>
+            Calculate impedance in an RC (resistor capacitor) circuit.
+
+            Inputs:
+            *   resistance: R (Ohms)
+            *   capacitive_reactance: Xc (Ohms).
+
+            Output:
+            *   impedance: Z (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Impedance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Impedance from an RCL Circuit" methodName="impedance_rcl" formulaImage="impedance_rcl.jpg">
+        <description>
+            Calculate impedance in an RCL (resistor capacitor inductor) circuit.
+
+            Inputs:
+            *   resistance: R (Ohms)
+            *   capacitive_reactance: Xc (Ohms)
+            *   inductive_reactance: Xl (Ohms)
+
+            Output:
+            *   impedance: Z (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
+            <parameter paramName="Inductive Reactance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Impedance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Impedance Phase Angle from an RCL Circuit" methodName="impedance_rcl_phase_angle" formulaImage="impedance_rcl_phase_angle.jpg">
+        <description>
+            Calculates the phase angle (Degrees) for impedance vectors in an RCL (resistor capacitor inductor) circuit.
+
+            Inputs:
+            *   resistance: R (Ohms)
+            *   capacitive_reactance: Xc (Ohms)
+            *   inductive_reactance: Xl (Ohms)
+
+            Output:
+            *   phase_angle: (Degrees)
+        </description>
+        <input_parameters>
+            <parameter paramName="Resistance" inputUnitScale="OHMS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
+            <parameter paramName="Inductive Reactance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Phase Angle" outputUnitScale="DEGREES" />
+    </calculation>
+    <calculation displayName="Gain Ratio for Power" methodName="gain" formulaImage="gain.jpg">
+        <description>
+            Calculates the gain ratio of either voltage, current or power.  If greater than 1 it is an amplification,
+            and if less than 1 it is an attenuation.
+
+            Inputs:
+            *   input_value: power: P (Watts)
+            *   output_value: P (Watts)
+
+            Output:
+            *   gain: A (ratio)
+        </description>
+        <input_parameters>
+            <parameter paramName="Input Power" inputUnitScale="WATTS" />
+            <parameter paramName="Input POWER" inputUnitScale="WATTS" />
+        </input_parameters>
+        <output outputName="Gain" outputUnitScale="RATIO" />
+    </calculation>
+    <calculation displayName="Gain Ratio for Voltage" methodName="gain" formulaImage="gain.jpg">
+        <description>
+            Calculates the gain ratio of voltage.  If greater than 1 it is an amplification,
+            and if less than 1 it is an attenuation.
+
+            Inputs:
+            *   input_value: voltage: V (Volts)
+            *   output_value: voltage: V (Volts)
+
+            Output:
+            *   gain: A (ratio)
+        </description>
+        <input_parameters>
+            <parameter paramName="Input Voltage" inputUnitScale="VOLTS" />
+            <parameter paramName="Output Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Gain" outputUnitScale="RATIO" />
+    </calculation>
+    <calculation displayName="Gain Ratio for Current" methodName="gain" formulaImage="gain.jpg">
+        <description>
+            Calculates the gain ratio of current.  If greater than 1 it is an amplification,
+            and if less than 1 it is an attenuation.
+
+            Inputs:
+            *   input_value: current: I (Amperes)
+            *   output_value: current: I (Amperes)
+
+            Output:
+            *   gain: A (ratio)
+        </description>
+        <input_parameters>
+            <parameter paramName="Input Current" inputUnitScale="AMPERES" />
+            <parameter paramName="Output Current" inputUnitScale="AMPERES" />
+        </input_parameters>
+        <output outputName="Gain" outputUnitScale="RATIO" />
+    </calculation>
+    <calculation displayName="Gain (dB) for Current" methodName="gain_db" formulaImage="gain_db.jpg">
+        <description>
+            Calculates the dB gain of current. If positive it is an amplification, and if negative it
+            is an attenuation.
+
+            Inputs:
+            *   input_value: current: I (Amperes)
+            *   output_value: current: I (Amperes)
+
+            Output:
+            *   gain: A (deciBels)
+        </description>
+        <input_parameters>
+            <parameter paramName="Input Current" inputUnitScale="AMPERES" />
+            <parameter paramName="Output Current" inputUnitScale="AMPERES" />
+        </input_parameters>
+        <output outputName="Gain" outputUnitScale="DECIBELS" />
+    </calculation>
+    <calculation displayName="Gain (dB) for Voltage" methodName="gain_db" formulaImage="gain_db.jpg">
+        <description>
+            Calculates the dB gain of voltage. If positive it is an amplification, and if negative it
+            is an attenuation.
+
+            Inputs:
+            *   input_value: voltage: V (Volts)
+            *   output_value: voltage: V (Volts)
+
+            Output:
+            *   gain: A (deciBels)
+        </description>
+        <input_parameters>
+            <parameter paramName="Input Voltage" inputUnitScale="VOLTS" />
+            <parameter paramName="Output Voltage" inputUnitScale="VOLTS" />
+        </input_parameters>
+        <output outputName="Gain" outputUnitScale="DECIBELS" />
+    </calculation>
+    <calculation displayName="Gain (dB) for Power" methodName="gain_db_power" formulaImage="gain_db_power.jpg">
+        <description>
+            Calculates the dB gain of power. If positive it is an amplification, and if negative it is an attenuation.
+
+            Inputs:
+                input_value: power: P (Watts)
+                output_value: power: P (Watts)
+
+            Output:
+                power gain: A (deciBels)
+        </description>
+        <input_parameters>
+            <parameter paramName="Input Power" inputUnitScale="WATTS" />
+            <parameter paramName="Output Power" inputUnitScale="WATTS" />
+        </input_parameters>
+        <output outputName="Gain" outputUnitScale="DECIBELS" />
     </calculation>
 </calculations>

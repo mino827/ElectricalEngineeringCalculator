@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import (QDesktopWidget, QMainWindow, QLabel, QStatusBar, QA
                              QPushButton, QLineEdit)
 import ElectronicsCalculator.electronics_calculator as ec
 import ElectronicsCalculator.scale_factors as sf
+from inspect import signature
+
 
 # GLOSSARY =========================================================================================================== #
 # Unit Type     - Any of the following: Capacitance, Inductance, Resistance, Frequency, Current, Power, Voltage,
@@ -40,61 +42,66 @@ class App(QMainWindow):
         retval = 0.0
 
         if parameterValue != "":
-            parameterValue = float(parameterValue)
-            scaleInput = self.mapUnitToEnum(inputUnitType)
-            factorInput = scaleInput[inputUnitScale]
-            retval = sf.scale_in(parameterValue, factorInput)
+            try:
+                parameterValue = float(parameterValue)
+                scaleInput = self.mapUnitToEnum(inputUnitType)
+                factorInput = scaleInput[inputUnitScale]
+                retval = sf.scale_in(parameterValue, factorInput)
+            except ValueError:
+                self.set_lblErrorDisplay("All inputs must be numeric")
 
         return retval
 
     def calculate(self):
         """Directly interfaces with the ElectronicsCalculator module to perform the calculations"""
-
+        self.lblErrorDisplay.clear()
+        self.lblErrorDisplay.hide()
+        tupleVersion = None
         retval = 0.0
-        value_1 = self.txtParameter_1.text()
-        value_2 = self.txtParameter_2.text()
-        value_3 = self.txtParameter_3.text()
-        value_4 = self.txtParameter_4.text()
-        value_5 = self.txtParameter_5.text()
+        inputValue_1 = self.txtParameter_1.text().strip()
+        inputValue_2 = self.txtParameter_2.text().strip()
+        inputValue_3 = self.txtParameter_3.text().strip()
+        inputValue_4 = self.txtParameter_4.text().strip()
+        inputValue_5 = self.txtParameter_5.text().strip()
 
-        parameter_1 = self.scaleParameter(value_1, self.inputUnitType_1, self.cmbUnitOptions_1.currentText())
-        parameter_2 = self.scaleParameter(value_2, self.inputUnitType_2, self.cmbUnitOptions_2.currentText())
-        parameter_3 = self.scaleParameter(value_3, self.inputUnitType_3, self.cmbUnitOptions_3.currentText())
-        parameter_4 = self.scaleParameter(value_4, self.inputUnitType_4, self.cmbUnitOptions_4.currentText())
-        parameter_5 = self.scaleParameter(value_5, self.inputUnitType_5, self.cmbUnitOptions_5.currentText())
+        parameter_1 = self.scaleParameter(inputValue_1, self.inputUnitType_1, self.cmbUnitOptions_1.currentText())
+        parameter_2 = self.scaleParameter(inputValue_2, self.inputUnitType_2, self.cmbUnitOptions_2.currentText())
+        parameter_3 = self.scaleParameter(inputValue_3, self.inputUnitType_3, self.cmbUnitOptions_3.currentText())
+        parameter_4 = self.scaleParameter(inputValue_4, self.inputUnitType_4, self.cmbUnitOptions_4.currentText())
+        parameter_5 = self.scaleParameter(inputValue_5, self.inputUnitType_5, self.cmbUnitOptions_5.currentText())
 
-        if self.methodName == "wavelength":
-            retval = ec.wavelength(parameter_1)
+        # Execute appropriate function in electronics_calculator module
+        try:
+            func = getattr(ec, self.methodName)
+            sig = signature(func)
+            parameterCount = len(sig.parameters)
 
-        elif self.methodName == "frequency_wl":
-            retval = ec.frequency_wl(parameter_1)
+            if parameterCount == 5:
+                retval = func(parameter_1, parameter_2, parameter_3, parameter_4, parameter_5)
+            elif parameterCount == 4:
+                retval = func(parameter_1, parameter_2, parameter_3, parameter_4)
+            elif parameterCount == 3:
+                retval = func(parameter_1, parameter_2, parameter_3)
+            elif parameterCount == 2:
+                retval = func(parameter_1, parameter_2)
+            elif parameterCount == 1:
+                if inputValue_5 != "":
+                    tupleVersion = (parameter_1, parameter_2, parameter_3, parameter_4, parameter_5)
+                elif inputValue_4 != "":
+                    tupleVersion = (parameter_1, parameter_2, parameter_3, parameter_4)
+                elif inputValue_3 != "":
+                    tupleVersion = (parameter_1, parameter_2, parameter_3)
+                elif inputValue_2 != "":
+                    tupleVersion = (parameter_1, parameter_2)
+                elif inputValue_1 != "":
+                    tupleVersion = (parameter_1,)
 
-        elif self.methodName == "frequency_lxl":
-            retval = ec.frequency_lxl(parameter_1, parameter_2)
-
-        elif self.methodName == "frequency_cxc":
-            retval = ec.frequency_cxc(parameter_1, parameter_2)
-
-        elif self.methodName == "antenna_length_qw":
-            retval = ec.antenna_length_qw(parameter_1)
-
-        elif self.methodName == "capacitance_fxc":
-            retval = ec.capacitance_fxc(parameter_1, parameter_2)
-
-        elif self.methodName == "inductance_fxl":
-            retval = ec.inductance_fxl(parameter_1, parameter_2)
-
-        elif self.methodName == "back_emf":
-            retval = ec.back_emf(parameter_1, parameter_2, parameter_3, parameter_4)
-
-        elif self.methodName == "reactance_inductive_fl":
-            retval = ec.reactance_inductive_fl(parameter_1, parameter_2)
-
-        elif self.methodName == "reactance_capacitive_fc":
-            retval = ec.reactance_capacitive_fc(parameter_1, parameter_2)
-
-        elif self.methodName == "reactance_capacitive_zr":
-            retval = ec.reactance_capacitive_zr(parameter_1, parameter_2)
+                if str(sig).find("tuple") > 0:
+                    retval = func(tupleVersion)
+                else:
+                    retval = func(parameter_1)
+        except Exception as e:
+            self.set_lblErrorDisplay(e)
 
         # Get enum for scale_factor
         scaleOutput = self.mapUnitToEnum(self.outputUnitType)
@@ -193,6 +200,13 @@ class App(QMainWindow):
 
         return listMethods
 
+    def set_lblErrorDisplay(self, message):
+        message = "ERROR: %s" % message
+        self.lblErrorDisplay.setText(message)
+        self.lblErrorDisplay.show()
+
+        return
+
     def set_UnitAbbreviations_Combined(self):
         """Gets a combined dictionary of all scales of all unit types. This is used for doing lookups."""
 
@@ -205,6 +219,9 @@ class App(QMainWindow):
         voltage = self.set_UnitAbbreviations_Voltage()
         distance = self.set_UnitAbbreviations_Distance()
         time = self.set_UnitAbbreviations_Time()
+        angle = self.set_UnitAbbreviations_Angle()
+        gainDB = self.set_UnitAbbreviations_GainDB()
+        gainA = self.set_UnitAbbreviations_GainA()
 
         # Merge all individual scale dictionaries into one
         combinedFactorAbbreviations = {
@@ -216,7 +233,10 @@ class App(QMainWindow):
             **power,
             **voltage,
             **distance,
-            **time
+            **time,
+            **angle,
+            **gainDB,
+            **gainA,
         }
 
         return combinedFactorAbbreviations
@@ -325,6 +345,33 @@ class App(QMainWindow):
         }
 
         return time
+
+    def set_UnitAbbreviations_Angle(self):
+        """Maps all scales for angle units to their equivalent abbreviations."""
+
+        angle = {
+            "DEGREES": "°"
+        }
+
+        return angle
+
+    def set_UnitAbbreviations_GainA(self):
+        """Maps all scales for Gain (ratio) units to their equivalent abbreviations."""
+
+        gaindb = {
+            "RATIO": "A"
+        }
+
+        return gaindb
+
+    def set_UnitAbbreviations_GainDB(self):
+        """Maps all scales for gain (dB) units to their equivalent abbreviations."""
+
+        gaina = {
+            "DECIBELS": "dB"
+        }
+
+        return gaina
 
     def set_Parameters(self, selectedIndex):
         """Controls the appearance of the input parameters for the calculations"""
@@ -612,12 +659,6 @@ class App(QMainWindow):
         """
 
         unitType = ""
-        # self.outputUnitType = ""
-        # self.inputUnitType_1 = ""
-        # self.inputUnitType_2 = ""
-        # self.inputUnitType_3 = ""
-        # self.inputUnitType_4 = ""
-        # self.inputUnitType_5 = ""
         unitDictionary = {}
 
         capacitance = self.set_UnitAbbreviations_Capacitance()
@@ -629,6 +670,9 @@ class App(QMainWindow):
         voltage = self.set_UnitAbbreviations_Voltage()
         distance = self.set_UnitAbbreviations_Distance()
         time = self.set_UnitAbbreviations_Time()
+        angle = self.set_UnitAbbreviations_Angle()
+        gainDB = self.set_UnitAbbreviations_GainDB()
+        gainA = self.set_UnitAbbreviations_GainA()
 
         # Check which unit type contains the default scale passed in
         if unit in capacitance:
@@ -666,6 +710,18 @@ class App(QMainWindow):
         elif unit in time:
             unitDictionary = time
             unitType = "Time"
+
+        elif unit in angle:
+            unitDictionary = angle
+            unitType = "Angle"
+
+        elif unit in gainDB:
+            unitDictionary = gainDB
+            unitType = "GainDB"
+
+        elif unit in gainA:
+            unitDictionary = gainA
+            unitType = "GainA"
 
         if purpose == "output":
             self.outputUnitType = unitType
@@ -721,6 +777,8 @@ class App(QMainWindow):
                 self.cmdCalculate_Click()
 
     def cmbCalculationSelect_Change(self, index):
+        self.lblErrorDisplay.clear()
+        self.lblErrorDisplay.hide()
         selectedIndex = int(index - 1)  # subtract one to accommodate for the injected placeholder
 
         # Reset control values
@@ -754,22 +812,22 @@ class App(QMainWindow):
     # ======================
     def __init__(self):
         super().__init__()
-        self.inputUnitType_5 = None     # Used for scaling the input of parameter 5 for calculation
-        self.inputUnitType_4 = None     # Used for scaling the input of parameter 4 for calculation
-        self.inputUnitType_3 = None     # Used for scaling the input of parameter 3 for calculation
-        self.inputUnitType_2 = None     # Used for scaling the input of parameter 2 for calculation
-        self.inputUnitType_1 = None     # Used for scaling the input of parameter 1 for calculation
-        self.outputUnitType = None      # Used for scaling the output of calculation
-        self.listDisplayNames = None    # List of displayNames for all calculations
-        self.methodName = None          # Holds the name of the currently selected calculation method
-        self.outputUnitScale = None     # Holds the default value of the currently selected output unit
+        self.inputUnitType_5 = None  # Used for scaling the input of parameter 5 for calculation
+        self.inputUnitType_4 = None  # Used for scaling the input of parameter 4 for calculation
+        self.inputUnitType_3 = None  # Used for scaling the input of parameter 3 for calculation
+        self.inputUnitType_2 = None  # Used for scaling the input of parameter 2 for calculation
+        self.inputUnitType_1 = None  # Used for scaling the input of parameter 1 for calculation
+        self.outputUnitType = None  # Used for scaling the output of calculation
+        self.listDisplayNames = None  # List of displayNames for all calculations
+        self.methodName = None  # Holds the name of the currently selected calculation method
+        self.outputUnitScale = None  # Holds the default value of the currently selected output unit
         self.inputUnitOptions_5 = None  # Dictionary of scale items for a given input unit type of parameter 5
         self.inputUnitOptions_4 = None  # Dictionary of scale items for a given input unit type of parameter 4
         self.inputUnitOptions_3 = None  # Dictionary of scale items for a given input unit type of parameter 3
         self.inputUnitOptions_2 = None  # Dictionary of scale items for a given input unit type of parameter 2
         self.inputUnitOptions_1 = None  # Dictionary of scale items for a given input unit type of parameter 1
-        self.outputUnitOptions = None   # Dictionary of scale items for a given output unit type
-        self.calculations = None        # List of dictionaries for all XML data for all calculations
+        self.outputUnitOptions = None  # Dictionary of scale items for a given output unit type
+        self.calculations = None  # List of dictionaries for all XML data for all calculations
 
         self.title = 'Electrical Engineering Calculator'
         self.width = 800
@@ -806,6 +864,7 @@ class App(QMainWindow):
         self.init_outputUnitControls()
         self.init_cmbChangeOutputUnit()
         self.init_inputParameterControls()
+        self.init_lblErrorDisplay()
         self.init_formulaDescription()
         self.init_cmdCalculate()
         self.init_cmdClear()
@@ -855,6 +914,17 @@ class App(QMainWindow):
                                                  "background-color: #3D3D3D;")
         self.lblFormulaDescription.setFont(self.fontDescription)
         self.lblFormulaDescription.setToolTip("Description of the currently selected calculation")
+
+    def init_lblErrorDisplay(self):
+        self.lblErrorDisplay = QLabel()
+        self.lblErrorDisplay.setParent(self)
+        self.lblErrorDisplay.setGeometry(QRect(10, 450, 445, 60))
+        self.lblErrorDisplay.setWordWrap(True)
+        self.lblErrorDisplay.setAlignment(Qt.AlignLeft)
+        self.lblErrorDisplay.setStyleSheet("align: top; padding: 10px; border: 1px solid; border-color: #212121; "
+                                           "background-color: #3D3D3D; color: yellow;")
+        self.lblErrorDisplay.setFont(self.fontDescription)
+        self.lblErrorDisplay.setToolTip("Description of the current error, if any")
 
     def init_inputParameterControls(self):
         self.lblInputs = QLabel("Inputs:")
@@ -1047,7 +1117,7 @@ class App(QMainWindow):
         self.cmbCalculationSelect = QComboBox()
         self.cmbCalculationSelect.addItems(self.calcOptions)
         self.cmbCalculationSelect.setParent(self)
-        self.cmbCalculationSelect.setGeometry(130, 30, 300, 25)
+        self.cmbCalculationSelect.setGeometry(130, 30, 325, 25)
         self.cmbCalculationSelect.setFont(self.fontCombo2)
         self.cmbCalculationSelect.setToolTip("Select a calculation to perform")
         self.cmbCalculationSelect.setStyleSheet("padding-left: 5px; border: 1px solid; border-color: #212121; "
