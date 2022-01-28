@@ -7,3 +7,6 @@ src/ElectricalEngineeringCalculator/module_info.py
 src/ElectricalEngineeringCalculator/__pycache__/module_info.cpython-39.pyc
 src/ElectricalEngineeringCalculator/module_info.py
 .idea/misc.xml
+.idea/workspace.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
