@@ -1,14 +1,15 @@
-import inspect
+import os
 import sys
+
+from PyQt5 import QtCore
 from bs4 import BeautifulSoup
 from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QFont, QPixmap
+from PyQt5.QtGui import QFont, QPixmap, QIcon
 from PyQt5.QtWidgets import (QDesktopWidget, QMainWindow, QLabel, QStatusBar, QApplication, QLCDNumber, QComboBox,
-                             QPushButton, QLineEdit)
+                             QPushButton, QLineEdit, QAction, QMessageBox)
 import ElectronicsCalculator.electronics_calculator as ec
 import ElectronicsCalculator.scale_factors as sf
 from inspect import signature
-
 
 # GLOSSARY =========================================================================================================== #
 # Unit Type     - Any of the following: Capacitance, Inductance, Resistance, Frequency, Current, Power, Voltage,
@@ -26,17 +27,143 @@ from inspect import signature
 #               1000000, respectively. This helps to avoid long numbers needing to be entered for calculations.
 # ==================================================================================================================== #
 
+StyleSheet = '''
+QMainWindow {
+    background-color: #303030; 
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+QLabel {
+    color: #14BC57;
+}
+
+QMessageBox {
+    background-color: #303030; 
+    font-size: 16px;
+}
+
+QStatusBar, QMenuBar {
+    background-color: #3D3D3D; 
+    color: #FFFFFF;
+    border: 1px solid #212121;
+}
+
+QComboBox {
+    border-radius: 5px;
+    padding-left: 5px; 
+    border: 1px solid #212121; 
+    background-color: #3D3D3D;
+    selection-background-color: #3D3D3D;
+    color: orange;
+}
+
+/*
+QComboBox::drop-down {
+    border-radius: 5px;
+    margin: 2px; 
+    border: 1px solid #212121;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/down_arrow.png)
+}
+*/
+
+QAbstractItemView {             
+    background-color: #3D3D3D;
+    selection-background-color: #555555;
+    color: orange;
+    selection-color: yellow;
+}
+
+QComboBox#cmbChangeOutputUnit {
+    padding: 2px 0px 2px 5px;
+}
+
+QLCDNumber {
+    border: 1px solid #212121; 
+    border-radius: 5px;
+}
+
+QLineEdit {
+    background-color: #3D3D3D; 
+    color: orange; 
+    padding: 0px 5px 2px 5px; 
+    border: 1px solid #212121;
+    border-radius: 5px;
+}
+                                              
+QMenuBar::item:selected {
+    background-color: #212121;
+    color: yellow;
+}
+
+QMenu {
+    background-color: #303030;   
+    color: #FFFFFF;
+    border: 1px solid #212121;
+}
+
+QMenu::item {
+    background-color: transparent;
+}
+
+QMenu::item:selected { 
+    background-color: #3D3D3D;
+    color: orange;
+}
+
+QLCDNumber, QLabel#lblOutputUnitValue, QLabel#lblOutputUnit {
+    background-color: #C0D5C0; 
+    color: #000000;
+}
+
+QLabel#lblImg, QLabel#lblFormulaDescription {
+    border: 1px solid #212121; 
+    background-color: #3D3D3D;
+    border-radius: 5px;
+}
+
+QLabel#lblFormulaDescription, QLabel#lblErrorDisplay {
+    align: top; 
+    padding: 10px;
+}
+
+QLabel#lblErrorDisplay {
+    background-color: #212121; 
+    border: 1px solid #FF0000; 
+    color: yellow;
+    border-radius: 5px;
+}
+
+QPushButton {
+    border-radius: 5px;        
+    background-color: #3D3D3D; 
+    color: orange; 
+    padding: 5px; 
+    border: 1px solid #212121;
+}
+
+QPushButton:hover {
+    background-color: orange;
+    color: #555555;
+}
+
+QPushButton:pressed {
+    background-color: #3D3D3D;
+    color: #14BC57;
+}
+
+QPushButton:focus, QLineEdit:focus, QComboBox:focus {
+    border: 1px solid #FF0000;
+}
+
+'''
+
 
 class App(QMainWindow):
     """GUI class that interacts with the ElectronicsCalculator package"""
-
-    def center(self):
-        """Center the object on screen"""
-
-        qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
-        qr.moveCenter(cp)
-        self.move(qr.topLeft())
 
     def scaleParameter(self, parameterValue, inputUnitType, inputUnitScale):
         retval = 0.0
@@ -53,7 +180,8 @@ class App(QMainWindow):
         return retval
 
     def calculate(self):
-        """Directly interfaces with the ElectronicsCalculator module to perform the calculations"""
+        """Directly interfaces with the electronics_calculator module to perform the calculations"""
+
         self.lblErrorDisplay.clear()
         self.lblErrorDisplay.hide()
         tupleVersion = None
@@ -100,7 +228,7 @@ class App(QMainWindow):
                     retval = func(tupleVersion)
                 else:
                     retval = func(parameter_1)
-        except Exception as e:
+        except Exception as e:  # Handles exceptions that the electronics_module throws
             self.set_lblErrorDisplay(e)
 
         # Get enum for scale_factor
@@ -120,85 +248,6 @@ class App(QMainWindow):
                 break
 
         return scale
-
-    def resetAll(self):
-        """Resets all GUI elements to their initial state"""
-
-        # Clear calculation selector
-        self.cmbCalculationSelect.setCurrentIndex(0)
-
-        # Set lcd value
-        self.lcdOutput.display(0)
-
-        # Clear unit value
-        self.lblOutputUnitValue.setText("")
-
-        # Clear input unit selectors
-        self.cmbUnitOptions_1.setCurrentIndex(0)
-        self.cmbUnitOptions_2.setCurrentIndex(0)
-        self.cmbUnitOptions_3.setCurrentIndex(0)
-        self.cmbUnitOptions_4.setCurrentIndex(0)
-        self.cmbUnitOptions_5.setCurrentIndex(0)
-
-        # Clear input parameters
-        self.txtParameter_1.setText("")
-        self.txtParameter_2.setText("")
-        self.txtParameter_3.setText("")
-        self.txtParameter_4.setText("")
-        self.txtParameter_5.setText("")
-
-        # Clear Calculation Description
-        self.lblFormulaDescription.setText("")
-
-    def readXML(self):
-        """Reads calculations.xml file and provides the various bits of data to the GUI via a list of dictionaries.
-        Stored in self.Calculations
-        """
-
-        with open("calculations.xml", "r") as f:
-            data = f.read()
-            doc = BeautifulSoup(data, "xml")
-
-            listMethods = []
-            listCalculation = []
-
-        for node in doc.contents[0].contents:
-            if node != '\n':
-                listCalculation.append(node)
-
-        for calculation in listCalculation:
-            methodName = calculation.attrs.get("methodName")
-            displayName = calculation.attrs.get("displayName")
-            formulaImage = calculation.attrs.get("formulaImage")
-            description = calculation.description.get_text()
-            outputName = calculation.output.attrs.get("outputName")
-            outputUnitScale = calculation.output.attrs.get("outputUnitScale")
-            parameters = calculation.input_parameters
-
-            count = 1
-            dictParameter = {}
-
-            for parameter in parameters:
-                if parameter != '\n':
-                    paramName = parameter.attrs.get("paramName")
-                    dictParameter["parameter_%d" % count] = paramName
-                    inputUnitScale = parameter.attrs.get("inputUnitScale")
-                    dictParameter["inputUnitScale_%d" % count] = inputUnitScale
-                    count += 1
-
-            dictMethod = {
-                "methodName": methodName,
-                "displayName": displayName,
-                "formulaImage": formulaImage,
-                "description": description,
-                "parameters": dictParameter,
-                "outputName": outputName,
-                "outputUnitScale": outputUnitScale
-            }
-
-            listMethods.append(dictMethod)
-
-        return listMethods
 
     def set_lblErrorDisplay(self, message):
         message = "ERROR: %s" % message
@@ -556,36 +605,6 @@ class App(QMainWindow):
 
         return
 
-    def set_Method(self, selectedIndex):
-        """Does a lookup of the self.calculations dictionary for the name of the method associated with the selected
-         calculation """
-
-        displayName = self.get_DisplayName(selectedIndex)
-        self.methodName = str(self.get_Data("methodName", displayName))
-
-        return
-
-    def set_lblFormulaDescription(self, selectedIndex):
-        if selectedIndex == -1:
-            description = ""
-        else:
-            displayName = self.get_DisplayName(selectedIndex)
-            description = str(self.get_Data("description", displayName)).split("\n")
-            newDescription = ""
-
-            # lstrip each individual line and ignore the first line if it is a new line only
-            if description[0] == '\r' or description[0] == '\n' or description[0] == '\t' or description[0] == '':
-                del description[0]
-
-            for line in description:
-                newDescription += line.lstrip("\n\r ") + "\n"
-
-            description = newDescription
-
-        self.lblFormulaDescription.setText(description)
-
-        return
-
     def set_lblOutput(self, selectedIndex):
         """Sets the text displayed in the 'Output:' label above the lcd"""
         displayName = self.get_DisplayName(selectedIndex)
@@ -632,10 +651,13 @@ class App(QMainWindow):
 
     def get_UnitAbbreviation_Combined(self, unit):
         """
-        Does a lookup for a given unit and returns its appropriate abbreviation value
+        Does a lookup for a given unit and returns its appropriate output scaling abbreviation value
 
-        Input: unit [str] - The unit whose abbreviation we are seeking
-        Output: unitAbbreviations[unit] [str] - The abbreviation
+        Input:
+            unit [str] - The unit whose abbreviation we are seeking
+
+        Output:
+            unitAbbreviations[unit] [str] - The abbreviation
         """
         retval = ""
 
@@ -654,6 +676,7 @@ class App(QMainWindow):
             unit [str] - The default unit for a unit type
 
             purpose [str] - The reason we are calling the method, so we can populate the correct variable
+
         Output:
             unitDictionary[str, str]
         """
@@ -750,7 +773,39 @@ class App(QMainWindow):
         self.statusBar.showMessage(message, 5000)
 
     def cmdClear_Click(self):
-        self.resetAll()
+        # Clear calculation selector
+        self.cmbCalculationSelect.setCurrentIndex(0)
+
+        # Clear lcd value
+        self.lcdOutput.display(0)
+
+        # Clear output unit value
+        self.lblOutputUnitValue.setText("")
+
+        # Clear output unit selector
+        self.cmbChangeOutputUnit.setCurrentIndex(0)
+        self.cmbChangeOutputUnit.hide()
+
+        # Clear input unit selectors
+        self.cmbUnitOptions_1.setCurrentIndex(0)
+        self.cmbUnitOptions_2.setCurrentIndex(0)
+        self.cmbUnitOptions_3.setCurrentIndex(0)
+        self.cmbUnitOptions_4.setCurrentIndex(0)
+        self.cmbUnitOptions_5.setCurrentIndex(0)
+
+        # Clear input parameters
+        self.txtParameter_1.setText("")
+        self.txtParameter_2.setText("")
+        self.txtParameter_3.setText("")
+        self.txtParameter_4.setText("")
+        self.txtParameter_5.setText("")
+
+        # Clear Calculation Description
+        self.lblFormulaDescription.setText("")
+
+        # Clear Error Display
+        self.lblErrorDisplay.setText("")
+        self.lblErrorDisplay.hide()
 
     def cmdCalculate_Click(self):
         self.lcdOutput.display(0)
@@ -782,6 +837,7 @@ class App(QMainWindow):
         selectedIndex = int(index - 1)  # subtract one to accommodate for the injected placeholder
 
         # Reset control values
+        self.lblImg.clear()
         self.lcdOutput.display(0)
         self.txtParameter_1.setText("")
         self.txtParameter_2.setText("")
@@ -795,15 +851,63 @@ class App(QMainWindow):
         self.cmbUnitOptions_5.clear()
         self.cmbChangeOutputUnit.clear()
 
-        # Set control values for new calculation
-        self.set_lblFormulaDescription(selectedIndex)
+        # ====================================== #
+        # Set control values for new calculation #
+        # ====================================== #
+        # Set lblFormulaDescription
+        if selectedIndex == -1:
+            description = ""
+        else:
+            displayName = self.get_DisplayName(selectedIndex)
+            description = str(self.get_Data("description", displayName)).split("\n")
+            newDescription = ""
+
+            # lstrip each individual line and ignore the first line if it is a new line only
+            if description[0] == '\r' or description[0] == '\n' or description[0] == '\t' or description[0] == '':
+                del description[0]
+
+            for line in description:
+                newDescription += line.lstrip("\n\r ") + "\n"
+
+            description = newDescription
+
+        self.lblFormulaDescription.setText(description)
+
         self.set_lblOutput(selectedIndex)
         self.set_Parameters(selectedIndex)
-        self.set_Method(selectedIndex)
+
+        # Does lookup of the calculations dictionary for the name of the method associated with the selected calculation
+        displayName = self.get_DisplayName(selectedIndex)
+        self.methodName = str(self.get_Data("methodName", displayName))
+
+        # Change formula image
+        formulaImageName = str(self.get_Data("formulaImage", displayName))
+        # formulaImageName = "%s.png" % self.methodName
+        imagePath = os.path.join("images", formulaImageName)
+        image = QPixmap(imagePath)
+        self.lblImg.setPixmap(image)
+
         self.set_lblOutputUnitValue(selectedIndex)
 
         self.outputUnitOptions = self.get_UnitDictionary(self.outputUnitScale, "output")
+        self.cmbChangeOutputUnit.show()
         self.cmbChangeOutputUnit.addItems(self.outputUnitOptions)
+
+        return
+
+    def menuAbout_Triggered(self):
+        msgAbout = QMessageBox()
+        msgAbout.setObjectName("msgAbout")
+        msgAbout.setIcon(QMessageBox.Information)
+        msgAbout.setWindowTitle("About Electrical Engineering Calculator")
+        msgAbout.setText("<span style='font-size: 20px;'>Electrical Engineering Calculator</span><br/>"
+                         "Copyright ©2022, Mino Girimonti<br/><br/>"
+                         "Version 0.1<br/><br/>"
+                         "<a style='color: orange;' href='https://github.com/mino827/ElectricalEngineeringCalculator'>"
+                         "https://github.com/mino827/ElectricalEngineeringCalculator</a> "
+        )
+        msgAbout.setStandardButtons(QMessageBox.Ok)
+        msgAbout.exec_()
 
         return
 
@@ -812,6 +916,13 @@ class App(QMainWindow):
     # ======================
     def __init__(self):
         super().__init__()
+        self.fontLabel = None  # Font control for lblCalcOptions, lblFormulaDescriptionTitle, lblFormula,
+        # lblParameter_1 to lblParameter_5, txtParameter_1 to txtParameter_5
+
+        self.fontCombo = None  # Font control for cmbUnitOptions_1 through cmbUnitOptions_5
+        self.fontCombo2 = None  # Font control for cmbCalculationSelect
+        self.fontButton = None  # Font control for cmdCalculate and cmdClear
+        self.fontDescription = None  # Font control for lblFormulaDescription
         self.inputUnitType_5 = None  # Used for scaling the input of parameter 5 for calculation
         self.inputUnitType_4 = None  # Used for scaling the input of parameter 4 for calculation
         self.inputUnitType_3 = None  # Used for scaling the input of parameter 3 for calculation
@@ -841,10 +952,52 @@ class App(QMainWindow):
 
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
-        self.setStyleSheet("background-color: #303030; color: white;")
 
         # Populate various lists from XML file
-        self.calculations = self.readXML()
+        with open("calculations.xml", "r") as f:
+            data = f.read()
+            doc = BeautifulSoup(data, "xml")
+
+            listMethods = []
+            listCalculation = []
+
+        for node in doc.contents[0].contents:
+            if node != '\n':
+                listCalculation.append(node)
+
+        for calculation in listCalculation:
+            methodName = calculation.attrs.get("methodName")
+            displayName = calculation.attrs.get("displayName")
+            formulaImage = calculation.attrs.get("formulaImage")
+            description = calculation.description.get_text()
+            outputName = calculation.output.attrs.get("outputName")
+            outputUnitScale = calculation.output.attrs.get("outputUnitScale")
+            parameters = calculation.input_parameters
+
+            count = 1
+            dictParameter = {}
+
+            for parameter in parameters:
+                if parameter != '\n':
+                    paramName = parameter.attrs.get("paramName")
+                    dictParameter["parameter_%d" % count] = paramName
+                    inputUnitScale = parameter.attrs.get("inputUnitScale")
+                    dictParameter["inputUnitScale_%d" % count] = inputUnitScale
+                    count += 1
+
+            dictMethod = {
+                "methodName": methodName,
+                "displayName": displayName,
+                "formulaImage": formulaImage,
+                "description": description,
+                "parameters": dictParameter,
+                "outputName": outputName,
+                "outputUnitScale": outputUnitScale
+            }
+
+            listMethods.append(dictMethod)
+
+        self.calculations = listMethods
 
         self.listDisplayNames = []
 
@@ -870,273 +1023,12 @@ class App(QMainWindow):
         self.init_cmdClear()
         self.init_statusBar()
 
-        self.center()
-
-    def init_statusBar(self):
-        self.statusBar = QStatusBar()
-        self.statusBar_Hover("Start by selecting a calculation type to perform")
-        self.statusBar.setStyleSheet("background-color: #3D3D3D; color: white; border-color: #212121;")
-        self.setStatusBar(self.statusBar)
-
-    def init_cmdClear(self):
-        self.cmdClear = QPushButton("Clear")
-        self.cmdClear.setParent(self)
-        self.cmdClear.setGeometry(590, 520, 200, 50)
-        self.cmdClear.setStyleSheet("background-color: #555555; color: white; padding-bottom: 5px; border-color: "
-                                    "#212121;")
-        self.cmdClear.setFont(self.fontButton)
-        self.cmdClear.clicked.connect(self.cmdClear_Click)
-
-    def init_cmdCalculate(self):
-        self.cmdCalculate = QPushButton("Calculate")
-        self.cmdCalculate.setParent(self)
-        self.cmdCalculate.setGeometry(300, 520, 200, 50)
-        self.cmdCalculate.setStyleSheet("background-color: #555555; color: white; padding-bottom: 5px; border-color: "
-                                        "#212121;")
-        self.cmdCalculate.setFont(self.fontButton)
-        self.cmdCalculate.clicked.connect(self.cmdCalculate_Click)
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
 
         return
-
-    def init_formulaDescription(self):
-        self.lblFormulaDescriptionTitle = QLabel("Calculation Description:")
-        self.lblFormulaDescriptionTitle.setParent(self)
-        self.lblFormulaDescriptionTitle.setGeometry(QRect(460, 170, 225, 50))
-        self.lblFormulaDescriptionTitle.setAlignment(Qt.AlignLeft)
-        self.lblFormulaDescriptionTitle.setFont(self.fontLabel)
-
-        self.lblFormulaDescription = QLabel()
-        self.lblFormulaDescription.setParent(self)
-        self.lblFormulaDescription.setGeometry(QRect(460, 200, 330, 310))
-        self.lblFormulaDescription.setWordWrap(True)
-        self.lblFormulaDescription.setAlignment(Qt.AlignLeft)
-        self.lblFormulaDescription.setStyleSheet("align: top; padding: 10px; border: 1px solid; border-color: #212121; "
-                                                 "background-color: #3D3D3D;")
-        self.lblFormulaDescription.setFont(self.fontDescription)
-        self.lblFormulaDescription.setToolTip("Description of the currently selected calculation")
-
-    def init_lblErrorDisplay(self):
-        self.lblErrorDisplay = QLabel()
-        self.lblErrorDisplay.setParent(self)
-        self.lblErrorDisplay.setGeometry(QRect(10, 450, 445, 60))
-        self.lblErrorDisplay.setWordWrap(True)
-        self.lblErrorDisplay.setAlignment(Qt.AlignLeft)
-        self.lblErrorDisplay.setStyleSheet("align: top; padding: 10px; border: 1px solid; border-color: #212121; "
-                                           "background-color: #3D3D3D; color: yellow;")
-        self.lblErrorDisplay.setFont(self.fontDescription)
-        self.lblErrorDisplay.setToolTip("Description of the current error, if any")
-
-    def init_inputParameterControls(self):
-        self.lblInputs = QLabel("Inputs:")
-        self.lblInputs.setParent(self)
-        self.lblInputs.setGeometry(10, 175, 250, 25)
-
-        self.lblParameter_1 = QLabel("Parameter_1:")
-        self.lblParameter_1.setParent(self)
-        self.lblParameter_1.setGeometry(10, 200, 140, 25)
-        self.lblParameter_1.setFont(self.fontLabel)
-
-        self.txtParameter_1 = QLineEdit()
-        self.txtParameter_1.setParent(self)
-        self.txtParameter_1.setGeometry(150, 200, 150, 25)
-        self.txtParameter_1.setFont(self.fontLabel)
-        self.txtParameter_1.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 2px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.txtParameter_1.setAlignment(Qt.AlignRight)
-        self.txtParameter_1.setToolTip("Enter a number for to this parameter")
-
-        self.cmbUnitOptions_1 = QComboBox()
-        self.cmbUnitOptions_1.setParent(self)
-        self.cmbUnitOptions_1.setGeometry(305, 200, 150, 25)
-        self.cmbUnitOptions_1.setFont(self.fontCombo)
-        self.cmbUnitOptions_1.currentIndexChanged.connect(self.cmbUnitOptions_Change)
-        self.cmbUnitOptions_1.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 0px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.cmbUnitOptions_1.setToolTip("Select the applicable unit scale for this input")
-
-        self.lblParameter_2 = QLabel("Parameter_2:")
-        self.lblParameter_2.setParent(self)
-        self.lblParameter_2.setGeometry(10, 250, 150, 25)
-        self.lblParameter_2.setFont(self.fontLabel)
-
-        self.txtParameter_2 = QLineEdit()
-        self.txtParameter_2.setParent(self)
-        self.txtParameter_2.setGeometry(150, 250, 150, 25)
-        self.txtParameter_2.setFont(self.fontLabel)
-        self.txtParameter_2.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 2px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.txtParameter_2.setAlignment(Qt.AlignRight)
-        self.txtParameter_2.setToolTip("Enter a number for to this parameter")
-
-        self.cmbUnitOptions_2 = QComboBox()
-        self.cmbUnitOptions_2.setParent(self)
-        self.cmbUnitOptions_2.setGeometry(305, 250, 150, 25)
-        self.cmbUnitOptions_2.setFont(self.fontCombo)
-        self.cmbUnitOptions_2.currentIndexChanged.connect(self.cmbUnitOptions_Change)
-        self.cmbUnitOptions_2.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 0px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.cmbUnitOptions_2.setToolTip("Select the applicable unit scale for this input")
-
-        self.lblParameter_3 = QLabel("Parameter_3:")
-        self.lblParameter_3.setParent(self)
-        self.lblParameter_3.setGeometry(10, 300, 150, 25)
-        self.lblParameter_3.setFont(self.fontLabel)
-
-        self.txtParameter_3 = QLineEdit()
-        self.txtParameter_3.setParent(self)
-        self.txtParameter_3.setGeometry(150, 300, 150, 25)
-        self.txtParameter_3.setFont(self.fontLabel)
-        self.txtParameter_3.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 2px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.txtParameter_3.setAlignment(Qt.AlignRight)
-        self.txtParameter_3.setToolTip("Enter a number for to this parameter")
-
-        self.cmbUnitOptions_3 = QComboBox()
-        self.cmbUnitOptions_3.setParent(self)
-        self.cmbUnitOptions_3.setGeometry(305, 300, 150, 25)
-        self.cmbUnitOptions_3.setFont(self.fontCombo)
-        self.cmbUnitOptions_3.currentIndexChanged.connect(self.cmbUnitOptions_Change)
-        self.cmbUnitOptions_3.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 0px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.cmbUnitOptions_3.setToolTip("Select the applicable unit scale for this input")
-
-        self.lblParameter_4 = QLabel("Parameter_4:")
-        self.lblParameter_4.setParent(self)
-        self.lblParameter_4.setGeometry(10, 350, 150, 25)
-        self.lblParameter_4.setFont(self.fontLabel)
-
-        self.txtParameter_4 = QLineEdit()
-        self.txtParameter_4.setParent(self)
-        self.txtParameter_4.setGeometry(150, 350, 150, 25)
-        self.txtParameter_4.setFont(self.fontLabel)
-        self.txtParameter_4.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 2px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.txtParameter_4.setAlignment(Qt.AlignRight)
-        self.txtParameter_4.setToolTip("Enter a number for to this parameter")
-
-        self.cmbUnitOptions_4 = QComboBox()
-        self.cmbUnitOptions_4.setParent(self)
-        self.cmbUnitOptions_4.setGeometry(305, 350, 150, 25)
-        self.cmbUnitOptions_4.setFont(self.fontCombo)
-        self.cmbUnitOptions_4.currentIndexChanged.connect(self.cmbUnitOptions_Change)
-        self.cmbUnitOptions_4.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 0px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.cmbUnitOptions_4.setToolTip("Select the applicable unit scale for this input")
-
-        self.lblParameter_5 = QLabel("Parameter_5:")
-        self.lblParameter_5.setParent(self)
-        self.lblParameter_5.setGeometry(10, 400, 150, 25)
-        self.lblParameter_5.setFont(self.fontLabel)
-
-        self.txtParameter_5 = QLineEdit()
-        self.txtParameter_5.setParent(self)
-        self.txtParameter_5.setGeometry(150, 400, 150, 25)
-        self.txtParameter_5.setFont(self.fontLabel)
-        self.txtParameter_5.setStyleSheet(
-            "background-color: #555555; color: white; padding: 0px 5px 2px 5px; border: 1px "
-            "solid; border-color: #212121;")
-        self.txtParameter_5.setAlignment(Qt.AlignRight)
-        self.txtParameter_5.setToolTip("Enter a number for to this parameter")
-
-        self.cmbUnitOptions_5 = QComboBox()
-        self.cmbUnitOptions_5.setParent(self)
-        self.cmbUnitOptions_5.setGeometry(305, 400, 150, 25)
-        self.cmbUnitOptions_5.setFont(self.fontCombo)
-        self.cmbUnitOptions_5.currentIndexChanged.connect(self.cmbUnitOptions_Change)
-        self.cmbUnitOptions_5.setStyleSheet("background-color: #555555; color: white; padding: 0px 5px 0px 5px; "
-                                            "border: 1px solid; border-color: #212121;")
-        self.cmbUnitOptions_5.setToolTip("Select the applicable unit scale for this input")
-
-    def init_cmbChangeOutputUnit(self):
-        self.cmbChangeOutputUnit = QComboBox()
-        self.cmbChangeOutputUnit.addItems(["-- Change Unit --"])
-        self.cmbChangeOutputUnit.setParent(self)
-        self.cmbChangeOutputUnit.setGeometry(688, 155, 103, 20)
-        self.cmbChangeOutputUnit.currentIndexChanged.connect(self.cmbChangeOutputUnit_Change)
-        self.cmbChangeOutputUnit.setStyleSheet("background-color: #555555; border-color: #212121; color: white; "
-                                               "padding: 2px 0px 2px 3px;")
-
-    def init_outputUnitControls(self):
-        self.lblOutputUnitValue = QLabel()
-        self.lblOutputUnitValue.setParent(self)
-        self.lblOutputUnitValue.setGeometry(762, 120, 25, 15)
-        self.lblOutputUnitValue.setStyleSheet("background-color: #C0D5C0; color: #000000;")
-
-        self.lblOutputUnit = QLabel("UNIT")
-        self.lblOutputUnit.setParent(self)
-        self.lblOutputUnit.setGeometry(762, 135, 25, 10)
-        self.lblOutputUnit.setStyleSheet("background-color: #C0D5C0; color: #000000;")
-
-    def init_lcdOutputControls(self):
-        self.lblOutput = QLabel("Output:")
-        self.lblOutput.setParent(self)
-        self.lblOutput.setGeometry(10, 75, 250, 25)
-
-        self.lcdOutput = QLCDNumber()
-        self.lcdOutput.setParent(self)
-        self.lcdOutput.setSegmentStyle(QLCDNumber.Filled)
-        self.lcdOutput.setGeometry(10, 100, 780, 50)
-        self.lcdOutput.setStyleSheet("background-color: #C0D5C0; color: #000000;")
-        self.lcdOutput.setDigitCount(25)
-        self.lcdOutput.setToolTip("The results of the current calculation")
-        self.lcdOutput.setSmallDecimalPoint(True)
-        self.lcdOutput.display(0)
-
-    def init_formulaDisplayControls(self):
-        self.lblFormula = QLabel("Formula:")
-        self.lblFormula.setParent(self)
-        self.lblFormula.setGeometry(360, 60, 120, 25)
-        self.lblFormula.setFont(self.fontLabel)
-
-        self.imagePath = "c:\\test.jpg"
-        self.lblImg = QLabel()
-        self.lblImg.setPixmap(QPixmap(self.imagePath))
-        self.lblImg.setParent(self)
-        self.lblImg.setGeometry(460, 30, 330, 60)
-        self.lblImg.setStyleSheet("border: 1px solid; border-color: #212121; background-color: #3D3D3D;")
-        self.lblImg.setToolTip("The relevant formula for ths calculation")
-
-    def init_calculationSelectControls(self):
-        self.lblCalcOptions = QLabel("Solving for:")
-        self.lblCalcOptions.setParent(self)
-        self.lblCalcOptions.setGeometry(10, 30, 120, 25)
-        self.lblCalcOptions.setFont(self.fontLabel)
-
-        functionNames = self.listDisplayNames
-
-        self.calcOptions = ['-- Select --'] + functionNames
-
-        self.cmbCalculationSelect = QComboBox()
-        self.cmbCalculationSelect.addItems(self.calcOptions)
-        self.cmbCalculationSelect.setParent(self)
-        self.cmbCalculationSelect.setGeometry(130, 30, 325, 25)
-        self.cmbCalculationSelect.setFont(self.fontCombo2)
-        self.cmbCalculationSelect.setToolTip("Select a calculation to perform")
-        self.cmbCalculationSelect.setStyleSheet("padding-left: 5px; border: 1px solid; border-color: #212121; "
-                                                "background-color: #555555;")
-
-        self.cmbCalculationSelect.currentIndexChanged.connect(self.cmbCalculationSelect_Change)
-
-    def init_menuBar(self):
-        self.mainMenu = self.menuBar()
-        self.mainMenu.setStyleSheet("menuBar {background-color: #3D3D3D; color: white; border-color: #212121;}"
-                                    "menuBar:hover {background-color: #555555;}")
-
-        self.fileMenu = self.mainMenu.addMenu('File')
-        self.fileExitSubMenu = self.fileMenu.addMenu('Exit')
-
-        self.editMenu = self.mainMenu.addMenu('Calculations')
-
-        self.helpMenu = self.mainMenu.addMenu('Help')
-        self.helpAboutSubMenu = self.helpMenu.addMenu('About')
 
     def init_fonts(self):
         self.fontLabel = QFont()
@@ -1154,9 +1046,273 @@ class App(QMainWindow):
         self.fontDescription = QFont()
         self.fontDescription.setPointSize(10)
 
+        return
 
-if __name__ == '__main__':
+    def init_menuBar(self):
+        mainMenu = self.menuBar()
+
+        fileMenu = mainMenu.addMenu('&File')
+        fileMenu_Exit = QAction(QIcon('exit.png'), 'E&xit', self)
+        fileMenu_Exit.setObjectName("fileMenu_Exit")
+        fileMenu_Exit.setShortcut('Alt+F4')
+        fileMenu_Exit.setStatusTip('Exit application')
+        fileMenu_Exit.triggered.connect(self.close)
+        fileMenu.addAction(fileMenu_Exit)
+
+        # calculationsMenu = mainMenu.addMenu('&Calculations')
+
+        helpMenu = mainMenu.addMenu('&Help')
+
+        # helpMenu_CheckUpdates = QAction('Check for &Updates', self)
+        # helpMenu_CheckUpdates.setShortcut('Ctrl+U')
+        # helpMenu_CheckUpdates.setStatusTip('Check for updates to the Electrical Engineering Calculator')
+        # # helpMenu_CheckUpdates.triggered.connect(self.close)
+        # helpMenu.addAction(helpMenu_CheckUpdates)
+
+        helpMenu_About = QAction('&About', self)
+        helpMenu_About.setShortcut('Ctrl+A')
+        helpMenu_About.setStatusTip('About Electrical Engineering Calculator')
+        helpMenu_About.triggered.connect(self.menuAbout_Triggered)
+        helpMenu.addAction(helpMenu_About)
+
+        return
+
+    def init_calculationSelectControls(self):
+        self.lblCalcOptions = QLabel("Solving for:")
+        self.lblCalcOptions.setParent(self)
+        self.lblCalcOptions.setGeometry(10, 30, 120, 25)
+        self.lblCalcOptions.setFont(self.fontLabel)
+
+        functionNames = self.listDisplayNames
+
+        self.calcOptions = ['-- Select Calculation to Perform --'] + functionNames
+
+        self.cmbCalculationSelect = QComboBox()
+        self.cmbCalculationSelect.addItems(self.calcOptions)
+        self.cmbCalculationSelect.setParent(self)
+        self.cmbCalculationSelect.setGeometry(130, 30, 325, 25)
+        self.cmbCalculationSelect.setFont(self.fontCombo2)
+        self.cmbCalculationSelect.setToolTip("Select a calculation to perform")
+
+        self.cmbCalculationSelect.currentIndexChanged.connect(self.cmbCalculationSelect_Change)
+
+        return
+
+    def init_formulaDisplayControls(self):
+        self.lblFormula = QLabel("Formula:")
+        self.lblFormula.setParent(self)
+        self.lblFormula.setGeometry(360, 60, 120, 25)
+        self.lblFormula.setFont(self.fontLabel)
+
+        self.lblImg = QLabel()
+        self.lblImg.setObjectName("lblImg")
+        self.lblImg.setParent(self)
+        self.lblImg.setGeometry(460, 30, 330, 60)
+        self.lblImg.setAlignment(QtCore.Qt.AlignCenter)
+        self.lblImg.setToolTip("The relevant formula for ths calculation")
+
+        return
+
+    def init_lcdOutputControls(self):
+        self.lblOutput = QLabel("Output:")
+        self.lblOutput.setParent(self)
+        self.lblOutput.setGeometry(10, 75, 250, 25)
+
+        self.lcdOutput = QLCDNumber()
+        self.lcdOutput.setParent(self)
+        self.lcdOutput.setSegmentStyle(QLCDNumber.Filled)
+        self.lcdOutput.setGeometry(10, 100, 780, 50)
+        self.lcdOutput.setDigitCount(25)
+        self.lcdOutput.setToolTip("The results of the current calculation")
+        self.lcdOutput.setSmallDecimalPoint(True)
+        self.lcdOutput.display(0)
+
+        return
+
+    def init_outputUnitControls(self):
+        self.lblOutputUnitValue = QLabel()
+        self.lblOutputUnitValue.setObjectName("lblOutputUnitValue")
+        self.lblOutputUnitValue.setParent(self)
+        self.lblOutputUnitValue.setGeometry(762, 120, 25, 15)
+
+        self.lblOutputUnit = QLabel("UNIT")
+        self.lblOutputUnit.setObjectName("lblOutputUnit")
+        self.lblOutputUnit.setParent(self)
+        self.lblOutputUnit.setGeometry(762, 135, 25, 10)
+
+        return
+
+    def init_cmbChangeOutputUnit(self):
+        self.cmbChangeOutputUnit = QComboBox()
+        self.cmbChangeOutputUnit.setObjectName("cmbChangeOutputUnit")
+        self.cmbChangeOutputUnit.addItems(["-- Change Unit --"])
+        self.cmbChangeOutputUnit.setParent(self)
+        self.cmbChangeOutputUnit.setGeometry(688, 155, 103, 20)
+        self.cmbChangeOutputUnit.currentIndexChanged.connect(self.cmbChangeOutputUnit_Change)
+
+        return
+
+    def init_inputParameterControls(self):
+        self.lblInputs = QLabel("Inputs:")
+        self.lblInputs.setParent(self)
+        self.lblInputs.setGeometry(10, 175, 250, 25)
+
+        self.lblParameter_1 = QLabel("Parameter_1:")
+        self.lblParameter_1.setParent(self)
+        self.lblParameter_1.setGeometry(10, 200, 140, 25)
+        self.lblParameter_1.setFont(self.fontLabel)
+
+        self.txtParameter_1 = QLineEdit()
+        self.txtParameter_1.setParent(self)
+        self.txtParameter_1.setGeometry(150, 200, 150, 25)
+        self.txtParameter_1.setFont(self.fontLabel)
+        self.txtParameter_1.setAlignment(Qt.AlignRight)
+        self.txtParameter_1.setToolTip("Enter a number for to this parameter")
+
+        self.cmbUnitOptions_1 = QComboBox()
+        self.cmbUnitOptions_1.setParent(self)
+        self.cmbUnitOptions_1.setGeometry(305, 200, 150, 25)
+        self.cmbUnitOptions_1.setFont(self.fontCombo)
+        self.cmbUnitOptions_1.currentIndexChanged.connect(self.cmbUnitOptions_Change)
+        self.cmbUnitOptions_1.setToolTip("Select the applicable unit scale for this input")
+
+        self.lblParameter_2 = QLabel("Parameter_2:")
+        self.lblParameter_2.setParent(self)
+        self.lblParameter_2.setGeometry(10, 250, 150, 25)
+        self.lblParameter_2.setFont(self.fontLabel)
+
+        self.txtParameter_2 = QLineEdit()
+        self.txtParameter_2.setParent(self)
+        self.txtParameter_2.setGeometry(150, 250, 150, 25)
+        self.txtParameter_2.setFont(self.fontLabel)
+        self.txtParameter_2.setAlignment(Qt.AlignRight)
+        self.txtParameter_2.setToolTip("Enter a number for to this parameter")
+
+        self.cmbUnitOptions_2 = QComboBox()
+        self.cmbUnitOptions_2.setParent(self)
+        self.cmbUnitOptions_2.setGeometry(305, 250, 150, 25)
+        self.cmbUnitOptions_2.setFont(self.fontCombo)
+        self.cmbUnitOptions_2.currentIndexChanged.connect(self.cmbUnitOptions_Change)
+        self.cmbUnitOptions_2.setToolTip("Select the applicable unit scale for this input")
+
+        self.lblParameter_3 = QLabel("Parameter_3:")
+        self.lblParameter_3.setParent(self)
+        self.lblParameter_3.setGeometry(10, 300, 150, 25)
+        self.lblParameter_3.setFont(self.fontLabel)
+
+        self.txtParameter_3 = QLineEdit()
+        self.txtParameter_3.setParent(self)
+        self.txtParameter_3.setGeometry(150, 300, 150, 25)
+        self.txtParameter_3.setFont(self.fontLabel)
+        self.txtParameter_3.setAlignment(Qt.AlignRight)
+        self.txtParameter_3.setToolTip("Enter a number for to this parameter")
+
+        self.cmbUnitOptions_3 = QComboBox()
+        self.cmbUnitOptions_3.setParent(self)
+        self.cmbUnitOptions_3.setGeometry(305, 300, 150, 25)
+        self.cmbUnitOptions_3.setFont(self.fontCombo)
+        self.cmbUnitOptions_3.currentIndexChanged.connect(self.cmbUnitOptions_Change)
+        self.cmbUnitOptions_3.setToolTip("Select the applicable unit scale for this input")
+
+        self.lblParameter_4 = QLabel("Parameter_4:")
+        self.lblParameter_4.setParent(self)
+        self.lblParameter_4.setGeometry(10, 350, 150, 25)
+        self.lblParameter_4.setFont(self.fontLabel)
+
+        self.txtParameter_4 = QLineEdit()
+        self.txtParameter_4.setParent(self)
+        self.txtParameter_4.setGeometry(150, 350, 150, 25)
+        self.txtParameter_4.setFont(self.fontLabel)
+        self.txtParameter_4.setAlignment(Qt.AlignRight)
+        self.txtParameter_4.setToolTip("Enter a number for to this parameter")
+
+        self.cmbUnitOptions_4 = QComboBox()
+        self.cmbUnitOptions_4.setParent(self)
+        self.cmbUnitOptions_4.setGeometry(305, 350, 150, 25)
+        self.cmbUnitOptions_4.setFont(self.fontCombo)
+        self.cmbUnitOptions_4.currentIndexChanged.connect(self.cmbUnitOptions_Change)
+        self.cmbUnitOptions_4.setToolTip("Select the applicable unit scale for this input")
+
+        self.lblParameter_5 = QLabel("Parameter_5:")
+        self.lblParameter_5.setParent(self)
+        self.lblParameter_5.setGeometry(10, 400, 150, 25)
+        self.lblParameter_5.setFont(self.fontLabel)
+
+        self.txtParameter_5 = QLineEdit()
+        self.txtParameter_5.setParent(self)
+        self.txtParameter_5.setGeometry(150, 400, 150, 25)
+        self.txtParameter_5.setFont(self.fontLabel)
+        self.txtParameter_5.setAlignment(Qt.AlignRight)
+        self.txtParameter_5.setToolTip("Enter a number for to this parameter")
+
+        self.cmbUnitOptions_5 = QComboBox()
+        self.cmbUnitOptions_5.setParent(self)
+        self.cmbUnitOptions_5.setGeometry(305, 400, 150, 25)
+        self.cmbUnitOptions_5.setFont(self.fontCombo)
+        self.cmbUnitOptions_5.currentIndexChanged.connect(self.cmbUnitOptions_Change)
+        self.cmbUnitOptions_5.setToolTip("Select the applicable unit scale for this input")
+
+    def init_lblErrorDisplay(self):
+        self.lblErrorDisplay = QLabel()
+        self.lblErrorDisplay.setObjectName("lblErrorDisplay")
+        self.lblErrorDisplay.setParent(self)
+        self.lblErrorDisplay.setGeometry(QRect(10, 449, 445, 60))
+        self.lblErrorDisplay.setWordWrap(True)
+        self.lblErrorDisplay.setAlignment(Qt.AlignLeft)
+        self.lblErrorDisplay.setFont(self.fontDescription)
+        self.lblErrorDisplay.setToolTip("Description of the current error, if any")
+
+        return
+
+    def init_formulaDescription(self):
+        self.lblFormulaDescriptionTitle = QLabel("Calculation Description:")
+        self.lblFormulaDescriptionTitle.setParent(self)
+        self.lblFormulaDescriptionTitle.setGeometry(QRect(460, 170, 225, 50))
+        self.lblFormulaDescriptionTitle.setAlignment(Qt.AlignLeft)
+        self.lblFormulaDescriptionTitle.setFont(self.fontLabel)
+
+        self.lblFormulaDescription = QLabel()
+        self.lblFormulaDescription.setObjectName("lblFormulaDescription")
+        self.lblFormulaDescription.setParent(self)
+        self.lblFormulaDescription.setGeometry(QRect(460, 200, 330, 310))
+        self.lblFormulaDescription.setWordWrap(True)
+        self.lblFormulaDescription.setAlignment(Qt.AlignLeft)
+        self.lblFormulaDescription.setFont(self.fontDescription)
+        self.lblFormulaDescription.setToolTip("Description of the currently selected calculation")
+
+    def init_cmdCalculate(self):
+        self.cmdCalculate = QPushButton("Calculate")
+        self.cmdCalculate.setParent(self)
+        self.cmdCalculate.setGeometry(300, 520, 200, 50)
+        self.cmdCalculate.setFont(self.fontButton)
+        self.cmdCalculate.clicked.connect(self.cmdCalculate_Click)
+
+        return
+
+    def init_cmdClear(self):
+        self.cmdClear = QPushButton("Clear")
+        self.cmdClear.setParent(self)
+        self.cmdClear.setGeometry(590, 520, 200, 50)
+        self.cmdClear.setFont(self.fontButton)
+        self.cmdClear.clicked.connect(self.cmdClear_Click)
+
+        return
+
+    def init_statusBar(self):
+        self.statusBar = QStatusBar()
+        self.statusBar_Hover("Start by selecting a calculation type to perform")
+        self.setStatusBar(self.statusBar)
+
+        return
+
+
+def main():
     app = QApplication(sys.argv)
+    app.setStyleSheet(StyleSheet)
     window = App()
     window.show()
     sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <calculations>
-    <calculation displayName="Wavelength from Frequency" methodName="wavelength" formulaImage="wavelength.jpg">
+    <calculation displayName="Wavelength from Frequency" methodName="wavelength" formulaImage="wavelength.png">
         <description>
             Calculates wavelength when frequency is known.
 
@@ -15,7 +15,7 @@
         </input_parameters>
         <output outputName="Wavelength" outputUnitScale="METERS" />
     </calculation>
-    <calculation displayName="Frequency from Wavelength" methodName="frequency_wl" formulaImage="frequency_wl.jpg">
+    <calculation displayName="Frequency from Wavelength" methodName="frequency_wl" formulaImage="frequency_wl.png">
         <description>
             Calculates frequency when wavelength is known.
 
@@ -30,7 +30,7 @@
         </input_parameters>
         <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
-    <calculation displayName="Frequency from Inductive Reactance" methodName="frequency_lxl" formulaImage="frequency_lxl.jpg">
+    <calculation displayName="Frequency from Inductive Reactance" methodName="frequency_lxl" formulaImage="frequency_lxl.png">
         <description>
             Calculates frequency when inductance and inductive reactance are known.
 
@@ -47,7 +47,7 @@
         </input_parameters>
         <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
-    <calculation displayName="Frequency from Capacitive Reactance" methodName="frequency_cxc" formulaImage="frequency_cxc.jpg">
+    <calculation displayName="Frequency from Capacitive Reactance" methodName="frequency_cxc" formulaImage="frequency_cxc.png">
         <description>
             Calculates frequency when capacitance and capacitive reactance are known.
 
@@ -64,7 +64,7 @@
         </input_parameters>
         <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
-    <calculation displayName="Antenna Length (Quarter Wavelength)" methodName="antenna_length_qw" formulaImage="antenna_length_qw.jpg">
+    <calculation displayName="Antenna Length (Quarter Wavelength)" methodName="antenna_length_qw" formulaImage="antenna_length_qw.png">
         <description>
             Calculates optimal quarter wave antenna length to receive input frequency. This is useful when
             designing dipole radio antennae.
@@ -80,7 +80,7 @@
         </input_parameters>
         <output outputName="Wavelength" outputUnitScale="METERS" />
     </calculation>
-    <calculation displayName="Capacitance from Capacitive Reactance" methodName="capacitance_fxc" formulaImage="capacitance_fxc.jpg">
+    <calculation displayName="Capacitance from Capacitive Reactance" methodName="capacitance_fxc" formulaImage="capacitance_fxc.png">
         <description>
             Calculates capacitance when frequency and capacitive reactance are known.
 
@@ -97,7 +97,7 @@
         </input_parameters>
         <output outputName="Capacitance" outputUnitScale="FARADS" />
     </calculation>
-    <calculation displayName="Inductance from Inductive Reactance" methodName="inductance_fxl" formulaImage="inductance_fxl.jpg">
+    <calculation displayName="Inductance from Inductive Reactance" methodName="inductance_fxl" formulaImage="inductance_fxl.png">
         <description>
             Calculates inductance when frequency and inductive reactance are known.
 
@@ -114,7 +114,7 @@
         </input_parameters>
         <output outputName="Inductance" outputUnitScale="HENRIES" />
     </calculation>
-    <calculation displayName="Inductive Back EMF" methodName="back_emf" formulaImage="back_emf.jpg">
+    <calculation displayName="Inductive Back EMF" methodName="back_emf" formulaImage="back_emf.png">
         <description>
             Calculates back EMF when current stops flowing in an inductor. Large voltages tend to get produced which can damage components unless sufficient protective diodes are used in the circuits.
 
@@ -135,7 +135,7 @@
         </input_parameters>
         <output outputName="Back EMF" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Inductive Reactance from Inductance" methodName="reactance_inductive_fl" formulaImage="reactance_inductive_fl.jpg">
+    <calculation displayName="Inductive Reactance from Inductance" methodName="reactance_inductive_fl" formulaImage="reactance_inductive_fl.png">
         <description>
             Calculates inductive reactance when frequency and inductance are known.
 
@@ -152,7 +152,7 @@
         </input_parameters>
         <output outputName="Inductive Reactance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Capacitance" methodName="reactance_capacitive_fc" formulaImage="reactance_capacitive_fc.jpg">
+    <calculation displayName="Capacitive Reactance from Capacitance" methodName="reactance_capacitive_fc" formulaImage="reactance_capacitive_fc.png">
         <description>
             Calculates capacitive reactance when frequency and capacitance are known.
 
@@ -169,7 +169,7 @@
         </input_parameters>
         <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.png">
         <description>
             Calculates capacitive reactance when impedance and resistance are known.
 
@@ -186,7 +186,7 @@
         </input_parameters>
         <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Power from Voltage and Resistance" methodName="power_er" formulaImage="power_er.jpg">
+    <calculation displayName="Power from Voltage and Resistance" methodName="power_er" formulaImage="power_er.png">
         <description>
             Calculates power based on voltage and resistance values using Ohm's Law.
 
@@ -203,7 +203,7 @@
         </input_parameters>
         <output outputName="Power" outputUnitScale="WATTS" />
     </calculation>
-    <calculation displayName="Power from Current and Voltage" methodName="power_ie" formulaImage="power_ie.jpg">
+    <calculation displayName="Power from Current and Voltage" methodName="power_ie" formulaImage="power_ie.png">
         <description>
             Calculates power based on current and voltage values using Ohm's Law.
 
@@ -220,7 +220,7 @@
         </input_parameters>
         <output outputName="Power" outputUnitScale="WATTS" />
     </calculation>
-    <calculation displayName="Power from Current and Resistance" methodName="power_ir" formulaImage="power_ir.jpg">
+    <calculation displayName="Power from Current and Resistance" methodName="power_ir" formulaImage="power_ir.png">
         <description>
             Calculates power based on current and resistance values using Ohm's Law. P
 
@@ -237,7 +237,7 @@
         </input_parameters>
         <output outputName="Power" outputUnitScale="WATTS" />
     </calculation>
-    <calculation displayName="Current from Power and Voltage" methodName="current_pe" formulaImage="current_pe.jpg">
+    <calculation displayName="Current from Power and Voltage" methodName="current_pe" formulaImage="current_pe.png">
         <description>
             Calculates current based on power and voltage values using Ohm's Law.
 
@@ -254,7 +254,7 @@
         </input_parameters>
         <output outputName="Current" outputUnitScale="AMPERES" />
     </calculation>
-    <calculation displayName="Current from Power and Resistance" methodName="current_pr" formulaImage="current_pr.jpg">
+    <calculation displayName="Current from Power and Resistance" methodName="current_pr" formulaImage="current_pr.png">
         <description>
             Calculates current based on power and resistance values using Ohm's Law.
 
@@ -271,7 +271,7 @@
         </input_parameters>
         <output outputName="Current" outputUnitScale="AMPERES" />
     </calculation>
-    <calculation displayName="Current from Voltage and Resistance" methodName="current_er" formulaImage="current_er.jpg">
+    <calculation displayName="Current from Voltage and Resistance" methodName="current_er" formulaImage="current_er.png">
         <description>
             Calculates current based on voltage and resistance values using Ohm's Law.
 
@@ -288,7 +288,7 @@
         </input_parameters>
         <output outputName="Current" outputUnitScale="AMPERES" />
     </calculation>
-    <calculation displayName="Voltage from Power and Current" methodName="voltage_pi" formulaImage="voltage_pi.jpg">
+    <calculation displayName="Voltage from Power and Current" methodName="voltage_pi" formulaImage="voltage_pi.png">
         <description>
             Calculates voltage based on power and current values using Ohm's Law.
 
@@ -305,7 +305,7 @@
         </input_parameters>
         <output outputName="Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Voltage from Power and Resistance" methodName="voltage_pr" formulaImage="voltage_pr.jpg">
+    <calculation displayName="Voltage from Power and Resistance" methodName="voltage_pr" formulaImage="voltage_pr.png">
         <description>
             Calculates voltage based on power and resistance values using Ohm's Law.
 
@@ -322,7 +322,7 @@
         </input_parameters>
         <output outputName="Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Voltage from Current and Resistance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.jpg">
+    <calculation displayName="Voltage from Current and Resistance" methodName="voltage_ir" formulaImage="voltage_ir.png">
         <description>
             Calculates voltage based on current and resistance values using Ohm's Law.
 
@@ -339,7 +339,7 @@
         </input_parameters>
         <output outputName="Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Resistance from Power and Voltage" methodName="resistance_pe" formulaImage="resistance_pe.jpg">
+    <calculation displayName="Resistance from Power and Voltage" methodName="resistance_pe" formulaImage="resistance_pe.png">
         <description>
             Calculates resistance based on power and voltage values using Ohm's Law.
 
@@ -356,7 +356,7 @@
         </input_parameters>
         <output outputName="Resistance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Resistance from Power and Current" methodName="resistance_pi" formulaImage="resistance_pi.jpg">
+    <calculation displayName="Resistance from Power and Current" methodName="resistance_pi" formulaImage="resistance_pi.png">
         <description>
             Calculates resistance based on power and current values using Ohm's Law.
 
@@ -373,7 +373,7 @@
         </input_parameters>
         <output outputName="Resistance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Resistance from Current and Voltage" methodName="resistance_ie" formulaImage="resistance_ie.jpg">
+    <calculation displayName="Resistance from Current and Voltage" methodName="resistance_ie" formulaImage="resistance_ie.png">
         <description>
             Calculates resistance based on current and voltage values using Ohm's Law.
 
@@ -390,7 +390,24 @@
         </input_parameters>
         <output outputName="Resistance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Voltage Divider from Resistance" methodName="voltage_divider_r" formulaImage="voltage_divider_r.jpg">
+    <calculation displayName="Resistance from Impedance and Capacitive Reactance" methodName="resistance_zxc" formulaImage="resistance_zxc.png">
+        <description>
+            Calculates resistance based on impedance and capacitive reactance values.
+
+            Inputs:
+            *   impedance: Z (Ohms)
+            *   capacitive_reactance: Xc (Ohms)
+
+            Output:
+            *   resistance: R (Ohms)
+        </description>
+        <input_parameters>
+            <parameter paramName="Impedance" inputUnitScale="OHMS" />
+            <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
+        </input_parameters>
+        <output outputName="Resistance" outputUnitScale="OHMS" />
+    </calculation>
+    <calculation displayName="Voltage Divider from Resistance" methodName="voltage_divider_r" formulaImage="voltage_divider_r.png">
         <description>
             Calculates output voltage when two resistors are used as a voltage divider. The output voltage will always be lower than the input voltage.
 
@@ -409,7 +426,7 @@
         </input_parameters>
         <output outputName="Voltage OUT" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Total Current in a Series Circuit" methodName="total_series_current" formulaImage="total_series_current.jpg">
+    <calculation displayName="Total Current in a Series Circuit" methodName="total_series_current" formulaImage="total_series_current.png">
         <description>
             Takes a tuple of current measurements in a series circuit and returns the total current.
 
@@ -428,7 +445,7 @@
         </input_parameters>
         <output outputName="Total Current" outputUnitScale="AMPERES" />
     </calculation>
-    <calculation displayName="Total Resistance in a Series Circuit" methodName="total_series_resistance" formulaImage="total_series_resistance.jpg">
+    <calculation displayName="Total Resistance in a Series Circuit" methodName="total_series_resistance" formulaImage="total_series_resistance.png">
         <description>
             Takes a tuple of resistance measurements in a series circuit and returns the total resistance.
 
@@ -447,7 +464,7 @@
         </input_parameters>
         <output outputName="Total Resistance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Total Voltage in a Series Circuit" methodName="total_series_voltage" formulaImage="total_series_voltage.jpg">
+    <calculation displayName="Total Voltage in a Series Circuit" methodName="total_series_voltage" formulaImage="total_series_voltage.png">
         <description>
              Takes a tuple of voltage measurements in a series circuit and returns the total voltage.
 
@@ -466,7 +483,7 @@
         </input_parameters>
         <output outputName="Total Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Total Capacitance in a Series Circuit" methodName="total_series_capacitance" formulaImage="total_series_capacitance.jpg">
+    <calculation displayName="Total Capacitance in a Series Circuit" methodName="total_series_capacitance" formulaImage="total_series_capacitance.png">
         <description>
             Takes a tuple of capacitance measurements in a series circuit and returns the total capacitance.
 
@@ -485,7 +502,7 @@
         </input_parameters>
         <output outputName="Total Capacitance" outputUnitScale="FARADS" />
     </calculation>
-    <calculation displayName="Total Inductance in a Series Circuit" methodName="total_series_inductance" formulaImage="total_series_inductance.jpg">
+    <calculation displayName="Total Inductance in a Series Circuit" methodName="total_series_inductance" formulaImage="total_series_inductance.png">
         <description>
             Takes a tuple of inductance measurements in a series circuit and returns the total inductance.
 
@@ -504,7 +521,7 @@
         </input_parameters>
         <output outputName="Total Inductance" outputUnitScale="HENRIES" />
     </calculation>
-    <calculation displayName="Total Current in a Parallel Circuit" methodName="total_parallel_current" formulaImage="total_parallel_current.jpg">
+    <calculation displayName="Total Current in a Parallel Circuit" methodName="total_parallel_current" formulaImage="total_parallel_current.png">
         <description>
             Takes a tuple of current measurements in a parallel circuit and returns the total current.
 
@@ -523,7 +540,7 @@
         </input_parameters>
         <output outputName="Total Current" outputUnitScale="AMPERES" />
     </calculation>
-    <calculation displayName="Total Resistance in a Parallel Circuit" methodName="total_parallel_resistance" formulaImage="total_parallel_resistance.jpg">
+    <calculation displayName="Total Resistance in a Parallel Circuit" methodName="total_parallel_resistance" formulaImage="total_parallel_resistance.png">
         <description>
             Takes a tuple of resistance measurements in a parallel circuit and returns the total resistance.
 
@@ -542,7 +559,7 @@
         </input_parameters>
         <output outputName="Total Resistance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Total Voltage in a Parallel Circuit" methodName="total_parallel_voltage" formulaImage="total_parallel_voltage.jpg">
+    <calculation displayName="Total Voltage in a Parallel Circuit" methodName="total_parallel_voltage" formulaImage="total_parallel_voltage.png">
         <description>
             Takes a tuple of voltage measurements in a parallel circuit and returns the total voltage.
 
@@ -561,7 +578,7 @@
         </input_parameters>
         <output outputName="Total Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Total Capacitance in a Parallel Circuit" methodName="total_parallel_capacitance" formulaImage="total_parallel_capacitance.jpg">
+    <calculation displayName="Total Capacitance in a Parallel Circuit" methodName="total_parallel_capacitance" formulaImage="total_parallel_capacitance.png">
         <description>
             Takes a tuple of capacitance measurements in a parallel circuit and returns the total capacitance.
 
@@ -580,7 +597,7 @@
         </input_parameters>
         <output outputName="Total Capacitance" outputUnitScale="FARADS" />
     </calculation>
-    <calculation displayName="Total Inductance in a Parallel Circuit" methodName="total_parallel_inductance" formulaImage="total_parallel_inductance.jpg">
+    <calculation displayName="Total Inductance in a Parallel Circuit" methodName="total_parallel_inductance" formulaImage="total_parallel_inductance.png">
         <description>
             Takes a tuple of inductance measurements in a parallel circuit and returns the total inductance.
 
@@ -599,7 +616,7 @@
         </input_parameters>
         <output outputName="Total Inductance" outputUnitScale="HENRIES" />
     </calculation>
-    <calculation displayName="RMS Voltage from Peak Voltage (SINE)" methodName="voltage_rms_from_peak" formulaImage="voltage_rms_from_peak.jpg">
+    <calculation displayName="RMS Voltage from Peak Voltage (SINE)" methodName="voltage_rms_from_peak" formulaImage="voltage_rms_from_peak.png">
         <description>
             Calculates rms voltage from peak voltage for AC sine waves.
 
@@ -614,7 +631,7 @@
         </input_parameters>
         <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="RMS Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_rms_from_peak_to_peak" formulaImage="voltage_rms_from_peak_to_peak.jpg">
+    <calculation displayName="RMS Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_rms_from_peak_to_peak" formulaImage="voltage_rms_from_peak_to_peak.png">
         <description>
             Calculates rms voltage from peak to peak voltage for AC sine waves.
 
@@ -629,7 +646,7 @@
         </input_parameters>
         <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="RMS Voltage from Average Voltage (SINE)" methodName="voltage_rms_from_average" formulaImage="voltage_rms_from_average.jpg">
+    <calculation displayName="RMS Voltage from Average Voltage (SINE)" methodName="voltage_rms_from_average" formulaImage="voltage_rms_from_average.png">
         <description>
             Calculates rms voltage from average voltage for AC sine waves.
 
@@ -644,7 +661,7 @@
         </input_parameters>
         <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Average Voltage from Peak Voltage (SINE)" methodName="voltage_average_from_peak" formulaImage="voltage_average_from_peak.jpg">
+    <calculation displayName="Average Voltage from Peak Voltage (SINE)" methodName="voltage_average_from_peak" formulaImage="voltage_average_from_peak.png">
         <description>
             Calculates average voltage from peak voltage for AC sine waves.
 
@@ -659,7 +676,7 @@
         </input_parameters>
         <output outputName="Average Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Average Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_average_from_peak_to_peak" formulaImage="voltage_average_from_peak_to_peak.jpg">
+    <calculation displayName="Average Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_average_from_peak_to_peak" formulaImage="voltage_average_from_peak_to_peak.png">
         <description>
             Calculates average voltage from peak to peak voltage for AC sine waves.
 
@@ -674,7 +691,7 @@
         </input_parameters>
         <output outputName="Average Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Average Voltage from RMS Voltage (SINE)" methodName="voltage_average_from_rms" formulaImage="voltage_average_from_rms.jpg">
+    <calculation displayName="Average Voltage from RMS Voltage (SINE)" methodName="voltage_average_from_rms" formulaImage="voltage_average_from_rms.png">
         <description>
             Calculates average voltage from rms voltage for AC sine waves.
 
@@ -689,7 +706,7 @@
         </input_parameters>
         <output outputName="Average Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Peak Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_peak_from_peak_to_peak" formulaImage="voltage_peak_from_peak_to_peak.jpg">
+    <calculation displayName="Peak Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_peak_from_peak_to_peak" formulaImage="voltage_peak_from_peak_to_peak.png">
         <description>
             Calculates peak voltage from peak to peak voltage for AC sine waves.
 
@@ -704,7 +721,7 @@
         </input_parameters>
         <output outputName="Peak Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_from_rms" formulaImage="voltage_peak_from_rms.jpg">
+    <calculation displayName="Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_from_rms" formulaImage="voltage_peak_from_rms.png">
         <description>
             Calculates peak voltage from rms voltage for AC sine waves.
 
@@ -719,7 +736,7 @@
         </input_parameters>
         <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_from_average" formulaImage="voltage_peak_from_average.jpg">
+    <calculation displayName="Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_from_average" formulaImage="voltage_peak_from_average.png">
         <description>
             Calculates peak voltage from average voltage for AC sine waves.
 
@@ -734,7 +751,7 @@
         </input_parameters>
         <output outputName="Average Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Peak-to-Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_to_peak_from_average" formulaImage="voltage_peak_to_peak_from_average.jpg">
+    <calculation displayName="Peak-to-Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_to_peak_from_average" formulaImage="voltage_peak_to_peak_from_average.png">
         <description>
             Calculates peak to peak voltage from average voltage for AC sine waves.
 
@@ -749,7 +766,7 @@
         </input_parameters>
         <output outputName="Peak-to-Peak Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Peak-to-Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_to_peak_from_rms" formulaImage="voltage_peak_to_peak_from_rms.jpg">
+    <calculation displayName="Peak-to-Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_to_peak_from_rms" formulaImage="voltage_peak_to_peak_from_rms.png">
         <description>
             Calculates peak to peak voltage from rms voltage for AC sine waves.
 
@@ -764,7 +781,7 @@
         </input_parameters>
         <output outputName="Peak-to-Peak Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Peak-to-Peak Voltage from Peak Voltage (SINE)" methodName="voltage_peak_to_peak_from_peak" formulaImage="voltage_peak_to_peak_from_peak.jpg">
+    <calculation displayName="Peak-to-Peak Voltage from Peak Voltage (SINE)" methodName="voltage_peak_to_peak_from_peak" formulaImage="voltage_peak_to_peak_from_peak.png">
         <description>
             Calculates peak to peak voltage from peak voltage for AC sine waves.
 
@@ -779,7 +796,7 @@
         </input_parameters>
         <output outputName="Peak-to-Peak Voltage" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Voltage Divider from Capacitance" methodName="voltage_divider_c" formulaImage="voltage_divider_c.jpg">
+    <calculation displayName="Voltage Divider from Capacitance" methodName="voltage_divider_c" formulaImage="voltage_divider_c.png">
         <description>
             Calculates output voltage when a capacitor is used as a voltage divider.
 
@@ -798,7 +815,7 @@
         </input_parameters>
         <output outputName="Voltage OUT" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Impedance from an RC Circuit" methodName="impedance_rc" formulaImage="impedance_rc.jpg">
+    <calculation displayName="Impedance from an RC Circuit" methodName="impedance_rc" formulaImage="impedance_rc.png">
         <description>
             Calculate impedance in an RC (resistor capacitor) circuit.
 
@@ -815,7 +832,7 @@
         </input_parameters>
         <output outputName="Impedance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Impedance from an RCL Circuit" methodName="impedance_rcl" formulaImage="impedance_rcl.jpg">
+    <calculation displayName="Impedance from an RCL Circuit" methodName="impedance_rcl" formulaImage="impedance_rcl.png">
         <description>
             Calculate impedance in an RCL (resistor capacitor inductor) circuit.
 
@@ -834,7 +851,7 @@
         </input_parameters>
         <output outputName="Impedance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Impedance Phase Angle from an RCL Circuit" methodName="impedance_rcl_phase_angle" formulaImage="impedance_rcl_phase_angle.jpg">
+    <calculation displayName="Impedance Phase Angle from an RCL Circuit" methodName="impedance_rcl_phase_angle" formulaImage="impedance_rcl_phase_angle.png">
         <description>
             Calculates the phase angle (Degrees) for impedance vectors in an RCL (resistor capacitor inductor) circuit.
 
@@ -853,7 +870,7 @@
         </input_parameters>
         <output outputName="Phase Angle" outputUnitScale="DEGREES" />
     </calculation>
-    <calculation displayName="Gain Ratio for Power" methodName="gain" formulaImage="gain.jpg">
+    <calculation displayName="Gain Ratio for Power" methodName="gain" formulaImage="gain.png">
         <description>
             Calculates the gain ratio of either voltage, current or power.  If greater than 1 it is an amplification,
             and if less than 1 it is an attenuation.
@@ -871,7 +888,7 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="RATIO" />
     </calculation>
-    <calculation displayName="Gain Ratio for Voltage" methodName="gain" formulaImage="gain.jpg">
+    <calculation displayName="Gain Ratio for Voltage" methodName="gain" formulaImage="gain.png">
         <description>
             Calculates the gain ratio of voltage.  If greater than 1 it is an amplification,
             and if less than 1 it is an attenuation.
@@ -889,7 +906,7 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="RATIO" />
     </calculation>
-    <calculation displayName="Gain Ratio for Current" methodName="gain" formulaImage="gain.jpg">
+    <calculation displayName="Gain Ratio for Current" methodName="gain" formulaImage="gain.png">
         <description>
             Calculates the gain ratio of current.  If greater than 1 it is an amplification,
             and if less than 1 it is an attenuation.
@@ -907,7 +924,7 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="RATIO" />
     </calculation>
-    <calculation displayName="Gain (dB) for Current" methodName="gain_db" formulaImage="gain_db.jpg">
+    <calculation displayName="Gain (dB) for Current" methodName="gain_db" formulaImage="gain_db.png">
         <description>
             Calculates the dB gain of current. If positive it is an amplification, and if negative it
             is an attenuation.
@@ -925,7 +942,7 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="DECIBELS" />
     </calculation>
-    <calculation displayName="Gain (dB) for Voltage" methodName="gain_db" formulaImage="gain_db.jpg">
+    <calculation displayName="Gain (dB) for Voltage" methodName="gain_db" formulaImage="gain_db.png">
         <description>
             Calculates the dB gain of voltage. If positive it is an amplification, and if negative it
             is an attenuation.
@@ -943,7 +960,7 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="DECIBELS" />
     </calculation>
-    <calculation displayName="Gain (dB) for Power" methodName="gain_db_power" formulaImage="gain_db_power.jpg">
+    <calculation displayName="Gain (dB) for Power" methodName="gain_db_power" formulaImage="gain_db_power.png">
         <description>
             Calculates the dB gain of power. If positive it is an amplification, and if negative it is an attenuation.
 
