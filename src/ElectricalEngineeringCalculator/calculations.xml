@@ -169,7 +169,7 @@
         </input_parameters>
         <output outputName="Capacitive Reactance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Impedance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.png">
+    <calculation displayName="Capacitive Reactance from Impedance and Resistance" methodName="reactance_capacitive_zr" formulaImage="reactance_capacitive_zr.png">
         <description>
             Calculates capacitive reactance when impedance and resistance are known.
 
