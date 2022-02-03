@@ -5,10 +5,10 @@
             Calculates wavelength when frequency is known.
 
             Inputs:
-            *   frequency: f (Hertz)
+            *   Frequency: f (Hertz)
 
             Output:
-            *   wavelength: w (Meters)
+            *   Wavelength: w (Meters)
         </description>
         <input_parameters>
             <parameter paramName="Frequency" inputUnitScale="HERTZ" />
@@ -20,10 +20,10 @@
             Calculates frequency when wavelength is known.
 
             Inputs:
-            *   wavelength: w (Meters)
+            *   Wavelength: w (Meters)
 
             Output:
-            *   frequency: f (Hertz)
+            *   Frequency: f (Hertz)
         </description>
         <input_parameters>
             <parameter paramName="Wavelength" inputUnitScale="METERS" />
@@ -35,11 +35,11 @@
             Calculates frequency when inductance and inductive reactance are known.
 
             Inputs:
-            *   inductance: L (Henries)
-            *   inductive_reactance: Xl (Ohms)
+            *   Inductance: L (Henries)
+            *   Inductive Reactance: Xl (Ohms)
 
             Output:
-            *   frequency: f (Hertz)
+            *   Frequency: f (Hertz)
         </description>
         <input_parameters>
             <parameter paramName="Inductance" inputUnitScale="HENRIES" />
@@ -52,11 +52,11 @@
             Calculates frequency when capacitance and capacitive reactance are known.
 
             Inputs:
-            *   capacitance: C (Farads)
-            *   capacitive_reactance: Xc (Ohms)
+            *   Capacitance: C (Farads)
+            *   Capacitive Reactance: Xc (Ohms)
 
             Output:
-            *   frequency: f (Hertz)
+            *   Frequency: f (Hertz)
         </description>
         <input_parameters>
             <parameter paramName="Capacitance" inputUnitScale="FARADS" />
@@ -70,10 +70,10 @@
             designing dipole radio antennae.
 
             Inputs:
-            *   frequency: f (Hertz)
+            *   Frequency: f (Hertz)
 
             Output:
-            *   quarter_wavelength: w (Meters)
+            *   Quarter Wavelength: w (Meters)
         </description>
         <input_parameters>
             <parameter paramName="Frequency" inputUnitScale="HERTZ" />
@@ -85,11 +85,11 @@
             Calculates capacitance when frequency and capacitive reactance are known.
 
             Inputs:
-            *   frequency: f (Hertz)
-            *   capacitive_reactance: Xc (Ohms)
+            *   Frequency: f (Hertz)
+            *   Capacitive Reactance: Xc (Ohms)
 
             Output:
-            *   capacitance: C (Farads)
+            *   Capacitance: C (Farads)
         </description>
         <input_parameters>
             <parameter paramName="Frequency" inputUnitScale="HERTZ" />
@@ -102,11 +102,11 @@
             Calculates inductance when frequency and inductive reactance are known.
 
             Inputs:
-            *   frequency: f (Hertz)
-            *   inductive_reactance: Xl (Ohms)
+            *   Frequency: f (Hertz)
+            *   Inductive Reactance: Xl (Ohms)
 
             Output:
-            *   inductance: L (Henries)
+            *   Inductance: L (Henries)
         </description>
         <input_parameters>
             <parameter paramName="Frequency" inputUnitScale="HERTZ" />
@@ -119,18 +119,18 @@
             Calculates back EMF when current stops flowing in an inductor. Large voltages tend to get produced which can damage components unless sufficient protective diodes are used in the circuits.
 
             Inputs:
-            *   inductance: L (Henries)
-            *   current_t1: It1 (Amperes) - Current at T1
-            *   current_t2: It2 (Amperes) - Current at T2
-            *   time: s (Seconds) - Elapsed time between T1 and T2
+            *   Inductance: L (Henries)
+            *   Current t1: It1 (Amperes) - Current at T1
+            *   Current t2: It2 (Amperes) - Current at T2
+            *   Time: t (Seconds) - Elapsed time between T1 and T2
 
             Output:
-            *   back_emf: V (Volts)
+            *   Back emf: Vback (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Inductance" inputUnitScale="HENRIES" />
-            <parameter paramName="Current_t1" inputUnitScale="AMPERES" />
-            <parameter paramName="Current_t2" inputUnitScale="AMPERES" />
+            <parameter paramName="Current t1" inputUnitScale="AMPERES" />
+            <parameter paramName="Current t2" inputUnitScale="AMPERES" />
             <parameter paramName="Time" inputUnitScale="SECONDS" />
         </input_parameters>
         <output outputName="Back EMF" outputUnitScale="VOLTS" />
@@ -140,11 +140,11 @@
             Calculates inductive reactance when frequency and inductance are known.
 
             Inputs:
-            *   frequency: f (Hertz)
-            *   inductance: L (Henries)
+            *   Frequency: f (Hertz)
+            *   Inductance: L (Henries)
 
             Output:
-            *   inductive_reactance: Xl (Ohms)
+            *   Inductive Reactance: Xl (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Inductance" inputUnitScale="HENRIES" />
@@ -157,11 +157,11 @@
             Calculates capacitive reactance when frequency and capacitance are known.
 
             Inputs:
-            *   frequency: f (Hertz)
-            *   capacitance: C (Farads)
+            *   Frequency: f (Hertz)
+            *   Capacitance: C (Farads)
 
             Output:
-            *   capacitive_reactance: Xc (Ohms)
+            *   Capacitive Reactance: Xc (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Capacitance" inputUnitScale="FARADS" />
@@ -174,11 +174,11 @@
             Calculates capacitive reactance when impedance and resistance are known.
 
             Inputs:
-            *   impedance: Z (Ohms)
-            *   resistance: R (Ohms)
+            *   Impedance: Z (Ohms)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   capacitive_reactance: Xc (Ohms)
+            *   Capacitive Reactance: Xc (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Impedance" inputUnitScale="OHMS" />
@@ -191,11 +191,11 @@
             Calculates power based on voltage and resistance values using Ohm's Law.
 
             Inputs:
-            *   voltage: V (Volts)
-            *   resistance: R (Ohms)
+            *   Voltage: V (Volts)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   power: P (Watts)
+            *   Power: P (Watts)
         </description>
         <input_parameters>
             <parameter paramName="Voltage" inputUnitScale="VOLTS" />
@@ -208,11 +208,11 @@
             Calculates power based on current and voltage values using Ohm's Law.
 
             Inputs:
-            *   current: I (Amperes)
-            *   voltage: V (Volts)
+            *   Current: I (Amperes)
+            *   Voltage: V (Volts)
 
             Output:
-            *   power: P (Watts)
+            *   Power: P (Watts)
         </description>
         <input_parameters>
             <parameter paramName="Current" inputUnitScale="AMPERES" />
@@ -225,11 +225,11 @@
             Calculates power based on current and resistance values using Ohm's Law. P
 
             Inputs:
-            *   current: I (Amperes)
-            *   resistance: R (Ohms)
+            *   Current: I (Amperes)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   power: P (Watts)
+            *   Power: P (Watts)
         </description>
         <input_parameters>
             <parameter paramName="Current" inputUnitScale="AMPERES" />
@@ -242,11 +242,11 @@
             Calculates current based on power and voltage values using Ohm's Law.
 
             Inputs:
-            *   power: P (Watts)
-            *   voltage: V (Volts)
+            *   Power: P (Watts)
+            *   Voltage: V (Volts)
 
             Output:
-            *   current: I (Amperes)
+            *   Current: I (Amperes)
         </description>
         <input_parameters>
             <parameter paramName="Power" inputUnitScale="WATTS" />
@@ -259,11 +259,11 @@
             Calculates current based on power and resistance values using Ohm's Law.
 
             Inputs:
-            *   power: P (Watts)
-            *   resistance: R (Ohms)
+            *   Power: P (Watts)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   current: I (Amperes)
+            *   Current: I (Amperes)
         </description>
         <input_parameters>
             <parameter paramName="Power" inputUnitScale="WATTS" />
@@ -276,11 +276,11 @@
             Calculates current based on voltage and resistance values using Ohm's Law.
 
             Inputs:
-            *   voltage: V (Volts)
-            *   resistance: R (Ohms)
+            *   Voltage: V (Volts)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   current: I (Amperes)
+            *   Current: I (Amperes)
         </description>
         <input_parameters>
             <parameter paramName="Voltage" inputUnitScale="VOLTS" />
@@ -293,11 +293,11 @@
             Calculates voltage based on power and current values using Ohm's Law.
 
             Inputs:
-            *   power: P (Watts)
-            *   current: I (Amperes)
+            *   Power: P (Watts)
+            *   Current: I (Amperes)
 
             Output:
-            *   voltage: V (Volts)
+            *   Voltage: V (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Power" inputUnitScale="WATTS" />
@@ -310,11 +310,11 @@
             Calculates voltage based on power and resistance values using Ohm's Law.
 
             Inputs:
-            *   power: P (Watts)
-            *   resistance: R (Ohms)
+            *   Power: P (Watts)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   voltage: V (Volts)
+            *   Voltage: V (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Power" inputUnitScale="WATTS" />
@@ -327,11 +327,11 @@
             Calculates voltage based on current and resistance values using Ohm's Law.
 
             Inputs:
-            *   current: I (Amperes)
-            *   resistance: R (Ohms)
+            *   Current: I (Amperes)
+            *   Resistance: R (Ohms)
 
             Output:
-            *   voltage: V (Volts)
+            *   Voltage: V (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Current" inputUnitScale="AMPERES" />
@@ -344,11 +344,11 @@
             Calculates resistance based on power and voltage values using Ohm's Law.
 
             Inputs:
-            *   power: P (Watts)
-            *   voltage: V (Volts)
+            *   Power: P (Watts)
+            *   Voltage: V (Volts)
 
             Output:
-            *   resistance: R (Ohms)
+            *   Resistance: R (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Power" inputUnitScale="WATTS" />
@@ -361,11 +361,11 @@
             Calculates resistance based on power and current values using Ohm's Law.
 
             Inputs:
-            *   power: P (Watts)
-            *   current: I (Amperes)
+            *   Power: P (Watts)
+            *   Current: I (Amperes)
 
             Output:
-            *   resistance: R (Ohms)
+            *   Resistance: R (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Power" inputUnitScale="WATTS" />
@@ -378,11 +378,11 @@
             Calculates resistance based on current and voltage values using Ohm's Law.
 
             Inputs:
-            *   current: I (Amperes)
-            *   voltage: V (Volts)
+            *   Current: I (Amperes)
+            *   Voltage: V (Volts)
 
             Output:
-            *   resistance: R (Ohms)
+            *   Resistance: R (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Current" inputUnitScale="AMPERES" />
@@ -395,11 +395,11 @@
             Calculates resistance based on impedance and capacitive reactance values.
 
             Inputs:
-            *   impedance: Z (Ohms)
-            *   capacitive_reactance: Xc (Ohms)
+            *   Impedance: Z (Ohms)
+            *   Capacitive Reactance: Xc (Ohms)
 
             Output:
-            *   resistance: R (Ohms)
+            *   Resistance: R (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Impedance" inputUnitScale="OHMS" />
@@ -412,29 +412,29 @@
             Calculates output voltage when two resistors are used as a voltage divider. The output voltage will always be lower than the input voltage.
 
             Inputs:
-            *   voltage_in: Vin (Volts)
-            *   resistance_1: R1 (Ohms)
-            *   resistance_2: R2 (Ohms)
+            *   Voltage In: Vin (Volts)
+            *   Resistance 1: R1 (Ohms)
+            *   Resistance 2: R2 (Ohms)
 
             Output:
-            *   voltage_out: Vout (Volts)
+            *   Voltage Out: Vout (Volts)
         </description>
         <input_parameters>
-            <parameter paramName="Voltage IN" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage In" inputUnitScale="VOLTS" />
             <parameter paramName="Resistance 1" inputUnitScale="OHMS" />
             <parameter paramName="Resistance 2" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Voltage OUT" outputUnitScale="VOLTS" />
+        <output outputName="Voltage Out" outputUnitScale="VOLTS" />
     </calculation>
     <calculation displayName="Total Current in a Series Circuit" methodName="total_series_current" formulaImage="total_series_current.png">
         <description>
-            Takes a tuple of current measurements in a series circuit and returns the total current.
+            Takes up to five current measurements in a series circuit and returns the total current.
 
             Inputs:
-            *   currents: I (Amperes)
+            *   Current 1 - 5: I1 - I5 (Amperes)
 
             Output:
-            *   total_current: I (Amperes)
+            *   Total Current: It (Amperes)
         </description>
         <input_parameters>
             <parameter paramName="Current 1" inputUnitScale="AMPERES" />
@@ -447,13 +447,13 @@
     </calculation>
     <calculation displayName="Total Resistance in a Series Circuit" methodName="total_series_resistance" formulaImage="total_series_resistance.png">
         <description>
-            Takes a tuple of resistance measurements in a series circuit and returns the total resistance.
+            Takes up to five resistance measurements in a series circuit and returns the total resistance.
 
             Inputs:
-            *   resistances: R (Ohms)
+            *   Resistance 1 - 5: R1 - R5 (Ohms)
 
             Output:
-            *   total_resistance: R (Ohms)
+            *   Total Resistance: Rt (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Resistance 1" inputUnitScale="OHMS" />
@@ -466,13 +466,13 @@
     </calculation>
     <calculation displayName="Total Voltage in a Series Circuit" methodName="total_series_voltage" formulaImage="total_series_voltage.png">
         <description>
-             Takes a tuple of voltage measurements in a series circuit and returns the total voltage.
+             Takes up tp five voltage measurements in a series circuit and returns the total voltage.
 
             Inputs:
-            *   voltages: V (Volts)
+            *   Voltage 1 - 5: V1 - V5 (Volts)
 
             Output:
-            *   total_voltage: V (Volts)
+            *   Total Voltage: Vt (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Voltage 1" inputUnitScale="VOLTS" />
@@ -485,13 +485,13 @@
     </calculation>
     <calculation displayName="Total Capacitance in a Series Circuit" methodName="total_series_capacitance" formulaImage="total_series_capacitance.png">
         <description>
-            Takes a tuple of capacitance measurements in a series circuit and returns the total capacitance.
+            Takes up to five capacitance measurements in a series circuit and returns the total capacitance.
 
             Inputs:
-            *   capacitances: C (Farads)
+            *   Capacitance 1 - 5: C1 - C5 (Farads)
 
             Output:
-            *   total_capacitance: C (Farads)
+            *   Total Capacitance: Ct (Farads)
         </description>
         <input_parameters>
             <parameter paramName="Capacitance 1" inputUnitScale="FARADS" />
@@ -504,13 +504,13 @@
     </calculation>
     <calculation displayName="Total Inductance in a Series Circuit" methodName="total_series_inductance" formulaImage="total_series_inductance.png">
         <description>
-            Takes a tuple of inductance measurements in a series circuit and returns the total inductance.
+            Takes up to five inductance measurements in a series circuit and returns the total inductance.
 
             Inputs:
-            *   inductances: L (Henries)
+            *   Inductance 1 - 5: L1 - L5 (Henries)
 
             Output:
-            *   total_inductance: L (Henries)
+            *   Total Inductance: Lt (Henries)
         </description>
         <input_parameters>
             <parameter paramName="Inductance 1" inputUnitScale="HENRIES" />
@@ -523,13 +523,13 @@
     </calculation>
     <calculation displayName="Total Current in a Parallel Circuit" methodName="total_parallel_current" formulaImage="total_parallel_current.png">
         <description>
-            Takes a tuple of current measurements in a parallel circuit and returns the total current.
+            Takes up to  five current measurements in a parallel circuit and returns the total current.
 
             Inputs:
-            *   currents: I (Amperes)
+            *   Current 1 - 5: I1 - I5 (Amperes)
 
             Output:
-            *   total_current: I (Amperes)
+            *   Total Current: It (Amperes)
         </description>
         <input_parameters>
             <parameter paramName="Current 1" inputUnitScale="AMPERES" />
@@ -542,13 +542,13 @@
     </calculation>
     <calculation displayName="Total Resistance in a Parallel Circuit" methodName="total_parallel_resistance" formulaImage="total_parallel_resistance.png">
         <description>
-            Takes a tuple of resistance measurements in a parallel circuit and returns the total resistance.
+            Takes up to five resistance measurements in a parallel circuit and returns the total resistance.
 
             Inputs:
-            *   resistances: R (Ohms)
+            *   Resistance 1 - 5: R1 - R5 (Ohms)
 
             Output:
-            *   total_resistance: R (Ohms)
+            *   Total Resistance: Rt (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Resistance 1" inputUnitScale="OHMS" />
@@ -561,13 +561,13 @@
     </calculation>
     <calculation displayName="Total Voltage in a Parallel Circuit" methodName="total_parallel_voltage" formulaImage="total_parallel_voltage.png">
         <description>
-            Takes a tuple of voltage measurements in a parallel circuit and returns the total voltage.
+            Takes up to five voltage measurements in a parallel circuit and returns the total voltage.
 
             Inputs:
-            *   voltages: V (Volts)
+            *   Voltage 1 - 5: V1 - V5 (Volts)
 
             Output:
-            *   total_voltage: V (Volts)
+            *   Total Voltage: Vt (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Voltage 1" inputUnitScale="VOLTS" />
@@ -580,13 +580,13 @@
     </calculation>
     <calculation displayName="Total Capacitance in a Parallel Circuit" methodName="total_parallel_capacitance" formulaImage="total_parallel_capacitance.png">
         <description>
-            Takes a tuple of capacitance measurements in a parallel circuit and returns the total capacitance.
+            Takes up to five capacitance measurements in a parallel circuit and returns the total capacitance.
 
             Inputs:
-            *   capacitances: C (Farads)
+            *   Capacitance 1 - 5: C1 - C5 (Farads)
 
             Output:
-            *   total_capacitance: C (Farads)
+            *   Total Capacitance: Ct (Farads)
         </description>
         <input_parameters>
             <parameter paramName="Capacitance 1" inputUnitScale="FARADS" />
@@ -599,13 +599,13 @@
     </calculation>
     <calculation displayName="Total Inductance in a Parallel Circuit" methodName="total_parallel_inductance" formulaImage="total_parallel_inductance.png">
         <description>
-            Takes a tuple of inductance measurements in a parallel circuit and returns the total inductance.
+            Takes up to five inductance measurements in a parallel circuit and returns the total inductance.
 
             Inputs:
-            *   inductances: L (Henries)
+            *   Inductance 1 - 5: L1 - L5 (Henries)
 
             Output:
-            *   total_inductance: L (Henries)
+            *   Total Inductance: Lt (Henries)
         </description>
         <input_parameters>
             <parameter paramName="Inductance 1" inputUnitScale="HENRIES" />
@@ -618,13 +618,13 @@
     </calculation>
     <calculation displayName="RMS Voltage from Peak Voltage (SINE)" methodName="voltage_rms_from_peak" formulaImage="voltage_rms_from_peak.png">
         <description>
-            Calculates rms voltage from peak voltage for AC sine waves.
+            Calculates RMS voltage from peak voltage for AC sine waves.
 
             Input:
-            *   peak_voltage: Vp (Volts)
+            *   Peak Voltage: Vp (Volts)
 
             Output:
-            *   rms_voltage: Vrms (Volts)
+            *   RMS Voltage: Vrms (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
@@ -633,13 +633,13 @@
     </calculation>
     <calculation displayName="RMS Voltage from Peak-to-Peak Voltage (SINE)" methodName="voltage_rms_from_peak_to_peak" formulaImage="voltage_rms_from_peak_to_peak.png">
         <description>
-            Calculates rms voltage from peak to peak voltage for AC sine waves.
+            Calculates RMS voltage from peak to peak voltage for AC sine waves.
 
             Input:
-            *   peak_to_peak_voltage: Vp-p (Volts)
+            *   Peak-to-Peak Voltage: Vpp (Volts)
 
             Output:
-            *   rms_voltage: Vrms (Volts)
+            *   RMS Voltage: Vrms (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Peak-to-Peak Voltage" inputUnitScale="VOLTS" />
@@ -648,13 +648,13 @@
     </calculation>
     <calculation displayName="RMS Voltage from Average Voltage (SINE)" methodName="voltage_rms_from_average" formulaImage="voltage_rms_from_average.png">
         <description>
-            Calculates rms voltage from average voltage for AC sine waves.
+            Calculates RMS voltage from average voltage for AC sine waves.
 
             Input:
-            *   average_voltage: Vav (Volts)
+            *   Average Voltage: Vav (Volts)
 
             Output:
-            *   rms_voltage: Vrms (Volts)
+            *   RMS Voltage: Vrms (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Average Voltage" inputUnitScale="VOLTS" />
@@ -666,10 +666,10 @@
             Calculates average voltage from peak voltage for AC sine waves.
 
             Input:
-            *   peak_voltage: Vp (Volts)
+            *   Peak Voltage: Vp (Volts)
 
             Output:
-            *   average_voltage: Vav (Volts)
+            *   Average Voltage: Vav (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
@@ -681,10 +681,10 @@
             Calculates average voltage from peak to peak voltage for AC sine waves.
 
             Input:
-            *   peak_to_peak_voltage: Vp-p (Volts)
+            *   Peak-to-Peak Voltage: Vpp (Volts)
 
             Output:
-            *   average_voltage: Vav (Volts)
+            *   Average Voltage: Vav (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Peak-to-Peak Voltage" inputUnitScale="VOLTS" />
@@ -693,13 +693,13 @@
     </calculation>
     <calculation displayName="Average Voltage from RMS Voltage (SINE)" methodName="voltage_average_from_rms" formulaImage="voltage_average_from_rms.png">
         <description>
-            Calculates average voltage from rms voltage for AC sine waves.
+            Calculates average voltage from RMS voltage for AC sine waves.
 
             Input:
-            *   rms_voltage: Vrms (Volts)
+            *   RMS Voltage: Vrms (Volts)
 
             Output:
-            *   average_voltage: Vav (Volts)
+            *   Average Voltage: Vav (Volts)
         </description>
         <input_parameters>
             <parameter paramName="RMS Voltage" inputUnitScale="VOLTS" />
@@ -711,10 +711,10 @@
             Calculates peak voltage from peak to peak voltage for AC sine waves.
 
             Input:
-            *   peak_to_peak_voltage: Vp-p (Volts)
+            *   Peak-to-Peak Voltage: Vpp (Volts)
 
             Output:
-            *   peak_voltage: Vp (Volts)
+            *   Peak Voltage: Vp (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Peak-to-Peak Voltage" inputUnitScale="VOLTS" />
@@ -723,43 +723,43 @@
     </calculation>
     <calculation displayName="Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_from_rms" formulaImage="voltage_peak_from_rms.png">
         <description>
-            Calculates peak voltage from rms voltage for AC sine waves.
+            Calculates peak voltage from RMS voltage for AC sine waves.
 
             Input:
-            *   rms_voltage: Vrms (Volts)
+            *   RMS Voltage: Vrms (Volts)
 
             Output:
-            *   peak_voltage: Vp (Volts)
+            *   Peak Voltage: Vp (Volts)
         </description>
         <input_parameters>
-            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+            <parameter paramName="RMS Voltage" inputUnitScale="VOLTS" />
         </input_parameters>
-        <output outputName="RMS Voltage" outputUnitScale="VOLTS" />
+        <output outputName="Peak Voltage" outputUnitScale="VOLTS" />
     </calculation>
     <calculation displayName="Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_from_average" formulaImage="voltage_peak_from_average.png">
         <description>
             Calculates peak voltage from average voltage for AC sine waves.
 
             Input:
-            *   average_voltage: Vav (Volts)
+            *   Average Voltage: Vav (Volts)
 
             Output:
-            *   peak_voltage: Vp (Volts)
+            *   Peak Voltage: Vp (Volts)
         </description>
         <input_parameters>
-            <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
+            <parameter paramName="Average Voltage" inputUnitScale="VOLTS" />
         </input_parameters>
-        <output outputName="Average Voltage" outputUnitScale="VOLTS" />
+        <output outputName="Peak Voltage" outputUnitScale="VOLTS" />
     </calculation>
     <calculation displayName="Peak-to-Peak Voltage from Average Voltage (SINE)" methodName="voltage_peak_to_peak_from_average" formulaImage="voltage_peak_to_peak_from_average.png">
         <description>
             Calculates peak to peak voltage from average voltage for AC sine waves.
 
             Input:
-            *   average_voltage: Vav (Volts)
+            *   verage Voltage: Vav (Volts)
 
             Output:
-            *   peak_to_peak_voltage: Vp-p (Volts)
+            *   Peak-to-Peak Voltage: Vpp (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Average Voltage" inputUnitScale="VOLTS" />
@@ -768,13 +768,13 @@
     </calculation>
     <calculation displayName="Peak-to-Peak Voltage from RMS Voltage (SINE)" methodName="voltage_peak_to_peak_from_rms" formulaImage="voltage_peak_to_peak_from_rms.png">
         <description>
-            Calculates peak to peak voltage from rms voltage for AC sine waves.
+            Calculates peak to peak voltage from RMS voltage for AC sine waves.
 
             Input:
-            *   rms_voltage: Vrms (Volts)
+            *   RMS Voltage: Vrms (Volts)
 
             Output:
-            *   peak_to_peak_voltage: Vp-p (Volts)
+            *   Peak-to-Peak Voltage: Vpp (Volts)
         </description>
         <input_parameters>
             <parameter paramName="RMS Voltage" inputUnitScale="VOLTS" />
@@ -786,10 +786,10 @@
             Calculates peak to peak voltage from peak voltage for AC sine waves.
 
             Input:
-            *   peak_voltage: Vp (Volts)
+            *   Peak Voltage: Vp (Volts)
 
             Output:
-            *   peak_to_peak_voltage: Vp-p (Volts)
+            *   Peak-to-Peak Voltage: Vpp (Volts)
         </description>
         <input_parameters>
             <parameter paramName="Peak Voltage" inputUnitScale="VOLTS" />
@@ -801,30 +801,30 @@
             Calculates output voltage when a capacitor is used as a voltage divider.
 
             Inputs:
-            *   voltage_in: Vin (Volts)
-            *   impedance: Z (Ohms)
-            *   capacitive_reactance: Xc (Ohms)
+            *   Voltage In: Vin (Volts)
+            *   Impedance: Z (Ohms)
+            *   Capacitive Reactance: Xc (Ohms)
 
             Output:
-            *   voltage_out: Vout (Volts)
+            *   Voltage Out: Vout (Volts)
         </description>
         <input_parameters>
-            <parameter paramName="Voltage IN" inputUnitScale="VOLTS" />
+            <parameter paramName="Voltage In" inputUnitScale="VOLTS" />
             <parameter paramName="Impedance" inputUnitScale="OHMS" />
             <parameter paramName="Capacitive Reactance" inputUnitScale="OHMS" />
         </input_parameters>
-        <output outputName="Voltage OUT" outputUnitScale="VOLTS" />
+        <output outputName="Voltage Out" outputUnitScale="VOLTS" />
     </calculation>
     <calculation displayName="Impedance from an RC Circuit" methodName="impedance_rc" formulaImage="impedance_rc.png">
         <description>
             Calculate impedance in an RC (resistor capacitor) circuit.
 
             Inputs:
-            *   resistance: R (Ohms)
-            *   capacitive_reactance: Xc (Ohms).
+            *   Resistance: R (Ohms)
+            *   Capacitive Reactance: Xc (Ohms).
 
             Output:
-            *   impedance: Z (Ohms)
+            *   Impedance: Z (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Resistance" inputUnitScale="OHMS" />
@@ -837,12 +837,12 @@
             Calculate impedance in an RCL (resistor capacitor inductor) circuit.
 
             Inputs:
-            *   resistance: R (Ohms)
-            *   capacitive_reactance: Xc (Ohms)
-            *   inductive_reactance: Xl (Ohms)
+            *   Resistance: R (Ohms)
+            *   Capacitive Reactance: Xc (Ohms)
+            *   Inductive Reactance: Xl (Ohms)
 
             Output:
-            *   impedance: Z (Ohms)
+            *   Impedance: Z (Ohms)
         </description>
         <input_parameters>
             <parameter paramName="Resistance" inputUnitScale="OHMS" />
@@ -856,12 +856,12 @@
             Calculates the phase angle (Degrees) for impedance vectors in an RCL (resistor capacitor inductor) circuit.
 
             Inputs:
-            *   resistance: R (Ohms)
-            *   capacitive_reactance: Xc (Ohms)
-            *   inductive_reactance: Xl (Ohms)
+            *   Resistance: R (Ohms)
+            *   Capacitive Reactance: Xc (Ohms)
+            *   Inductive Reactance: Xl (Ohms)
 
             Output:
-            *   phase_angle: (Degrees)
+            *   Phase Angle: theta (Degrees)
         </description>
         <input_parameters>
             <parameter paramName="Resistance" inputUnitScale="OHMS" />
@@ -870,35 +870,34 @@
         </input_parameters>
         <output outputName="Phase Angle" outputUnitScale="DEGREES" />
     </calculation>
-    <calculation displayName="Gain Ratio for Power" methodName="gain" formulaImage="gain.png">
+    <calculation displayName="Gain Ratio for Power" methodName="gain" formulaImage="gain_ratio_power.png">
         <description>
-            Calculates the gain ratio of either voltage, current or power.  If greater than 1 it is an amplification,
-            and if less than 1 it is an attenuation.
+            Calculates the gain ratio of power.  If greater than 1 it is an amplification, and if less than 1 it is an attenuation.
 
             Inputs:
-            *   input_value: power: P (Watts)
-            *   output_value: P (Watts)
+            *   Input Power: Pin (Watts)
+            *   Output Power: Pout (Watts)
 
             Output:
-            *   gain: A (ratio)
+            *   Gain: A (ratio)
         </description>
         <input_parameters>
             <parameter paramName="Input Power" inputUnitScale="WATTS" />
-            <parameter paramName="Input POWER" inputUnitScale="WATTS" />
+            <parameter paramName="Output Power" inputUnitScale="WATTS" />
         </input_parameters>
         <output outputName="Gain" outputUnitScale="RATIO" />
     </calculation>
-    <calculation displayName="Gain Ratio for Voltage" methodName="gain" formulaImage="gain.png">
+    <calculation displayName="Gain Ratio for Voltage" methodName="gain" formulaImage="gain_ratio_voltage.png">
         <description>
             Calculates the gain ratio of voltage.  If greater than 1 it is an amplification,
             and if less than 1 it is an attenuation.
 
             Inputs:
-            *   input_value: voltage: V (Volts)
-            *   output_value: voltage: V (Volts)
+            *   Input Voltage: Vin (Volts)
+            *   Output Voltage: Vout (Volts)
 
             Output:
-            *   gain: A (ratio)
+            *   Gain: A (ratio)
         </description>
         <input_parameters>
             <parameter paramName="Input Voltage" inputUnitScale="VOLTS" />
@@ -906,17 +905,16 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="RATIO" />
     </calculation>
-    <calculation displayName="Gain Ratio for Current" methodName="gain" formulaImage="gain.png">
+    <calculation displayName="Gain Ratio for Current" methodName="gain" formulaImage="gain_ratio_current.png">
         <description>
-            Calculates the gain ratio of current.  If greater than 1 it is an amplification,
-            and if less than 1 it is an attenuation.
+            Calculates the gain ratio of current.  If greater than 1 it is an amplification, and if less than 1 it is an attenuation.
 
             Inputs:
-            *   input_value: current: I (Amperes)
-            *   output_value: current: I (Amperes)
+            *   Input Current: Iin (Amperes)
+            *   Output Current: Iout (Amperes)
 
             Output:
-            *   gain: A (ratio)
+            *   Gain: A (ratio)
         </description>
         <input_parameters>
             <parameter paramName="Input Current" inputUnitScale="AMPERES" />
@@ -924,17 +922,16 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="RATIO" />
     </calculation>
-    <calculation displayName="Gain (dB) for Current" methodName="gain_db" formulaImage="gain_db.png">
+    <calculation displayName="Gain (dB) for Current" methodName="gain_db" formulaImage="gain_db_current.png">
         <description>
-            Calculates the dB gain of current. If positive it is an amplification, and if negative it
-            is an attenuation.
+            Calculates the dB gain of current. If positive it is an amplification, and if negative it is an attenuation.
 
             Inputs:
-            *   input_value: current: I (Amperes)
-            *   output_value: current: I (Amperes)
+            *   Input Current: Iin (Amperes)
+            *   Output Current: Iout (Amperes)
 
             Output:
-            *   gain: A (deciBels)
+            *   Gain: A (deciBels)
         </description>
         <input_parameters>
             <parameter paramName="Input Current" inputUnitScale="AMPERES" />
@@ -942,17 +939,16 @@
         </input_parameters>
         <output outputName="Gain" outputUnitScale="DECIBELS" />
     </calculation>
-    <calculation displayName="Gain (dB) for Voltage" methodName="gain_db" formulaImage="gain_db.png">
+    <calculation displayName="Gain (dB) for Voltage" methodName="gain_db" formulaImage="gain_db_voltage.png">
         <description>
-            Calculates the dB gain of voltage. If positive it is an amplification, and if negative it
-            is an attenuation.
+            Calculates the dB gain of voltage. If positive it is an amplification, and if negative it is an attenuation.
 
             Inputs:
-            *   input_value: voltage: V (Volts)
-            *   output_value: voltage: V (Volts)
+            *   Input Voltage: Vin (Volts)
+            *   Output Voltage: Vout (Volts)
 
             Output:
-            *   gain: A (deciBels)
+            *   Gain: A (deciBels)
         </description>
         <input_parameters>
             <parameter paramName="Input Voltage" inputUnitScale="VOLTS" />
@@ -965,11 +961,11 @@
             Calculates the dB gain of power. If positive it is an amplification, and if negative it is an attenuation.
 
             Inputs:
-                input_value: power: P (Watts)
-                output_value: power: P (Watts)
+            *   Input Power: Pin (Watts)
+            *   Output Power: Pout (Watts)
 
             Output:
-                power gain: A (deciBels)
+            *   Power Gain: A (deciBels)
         </description>
         <input_parameters>
             <parameter paramName="Input Power" inputUnitScale="WATTS" />
