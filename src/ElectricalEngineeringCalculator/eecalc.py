@@ -1152,10 +1152,6 @@ class App(QMainWindow):
         return
 
     def init_inputParameterControls(self):
-        # self.lblInputs = QLabel("Inputs:")
-        # self.lblInputs.setParent(self)
-        # self.lblInputs.setGeometry(10, 130, 250, 25)
-
         self.lblParameter_1 = QLabel("Parameter_1:")
         self.lblParameter_1.setParent(self)
         self.lblParameter_1.setGeometry(13, 130, 290, 25)
