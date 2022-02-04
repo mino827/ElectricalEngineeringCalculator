@@ -781,9 +781,6 @@ class App(QMainWindow):
     # ==============
     # EVENT HANDLERS
     # ==============
-    def statusBar_Hover(self, message):
-        self.statusBar.showMessage(message, 5000)
-
     def cmdClear_Click(self):
         # Clear calculation selector
         self.cmbCalculationSelect.setCurrentIndex(0)
@@ -845,7 +842,7 @@ class App(QMainWindow):
 
     def cmbCalculationSelect_Change(self, index):
         selectedIndex = int(index - 1)  # subtract one to accommodate for the injected placeholder
-
+        self.statusBar.showMessage("")
         # Reset control values
         self.lblOutput.clear()
         self.lblOutputUnitValue.clear()
@@ -1163,7 +1160,7 @@ class App(QMainWindow):
         self.txtParameter_1.setFont(self.fontLabel)
         self.txtParameter_1.setAlignment(Qt.AlignRight)
         self.txtParameter_1.setMaxLength(27)
-        self.txtParameter_1.setToolTip("Enter a number for to this parameter")
+        self.txtParameter_1.setToolTip("Enter a number for this parameter")
 
         self.cmbUnitOptions_1 = QComboBox()
         self.cmbUnitOptions_1.setParent(self)
@@ -1183,7 +1180,7 @@ class App(QMainWindow):
         self.txtParameter_2.setFont(self.fontLabel)
         self.txtParameter_2.setAlignment(Qt.AlignRight)
         self.txtParameter_2.setMaxLength(27)
-        self.txtParameter_2.setToolTip("Enter a number for to this parameter")
+        self.txtParameter_2.setToolTip("Enter a number for this parameter")
 
         self.cmbUnitOptions_2 = QComboBox()
         self.cmbUnitOptions_2.setParent(self)
@@ -1203,7 +1200,7 @@ class App(QMainWindow):
         self.txtParameter_3.setFont(self.fontLabel)
         self.txtParameter_3.setAlignment(Qt.AlignRight)
         self.txtParameter_3.setMaxLength(27)
-        self.txtParameter_3.setToolTip("Enter a number for to this parameter")
+        self.txtParameter_3.setToolTip("Enter a number for this parameter")
 
         self.cmbUnitOptions_3 = QComboBox()
         self.cmbUnitOptions_3.setParent(self)
@@ -1223,7 +1220,7 @@ class App(QMainWindow):
         self.txtParameter_4.setFont(self.fontLabel)
         self.txtParameter_4.setAlignment(Qt.AlignRight)
         self.txtParameter_4.setMaxLength(27)
-        self.txtParameter_4.setToolTip("Enter a number for to this parameter")
+        self.txtParameter_4.setToolTip("Enter a number for this parameter")
 
         self.cmbUnitOptions_4 = QComboBox()
         self.cmbUnitOptions_4.setParent(self)
@@ -1243,7 +1240,7 @@ class App(QMainWindow):
         self.txtParameter_5.setFont(self.fontLabel)
         self.txtParameter_5.setAlignment(Qt.AlignRight)
         self.txtParameter_5.setMaxLength(27)
-        self.txtParameter_5.setToolTip("Enter a number for to this parameter")
+        self.txtParameter_5.setToolTip("Enter a number for this parameter")
 
         self.cmbUnitOptions_5 = QComboBox()
         self.cmbUnitOptions_5.setParent(self)
@@ -1315,7 +1312,7 @@ class App(QMainWindow):
 
     def init_statusBar(self):
         self.statusBar = QStatusBar()
-        self.statusBar_Hover("Start by selecting a calculation type to perform")
+        self.statusBar.showMessage('Start by selecting a calculation type to perform.')
         self.setStatusBar(self.statusBar)
 
         return
