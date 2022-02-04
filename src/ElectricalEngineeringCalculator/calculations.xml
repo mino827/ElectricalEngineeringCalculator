@@ -30,7 +30,7 @@
         </input_parameters>
         <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
-    <calculation displayName="Frequency from Inductive Reactance" methodName="frequency_lxl" formulaImage="frequency_lxl.png">
+    <calculation displayName="Frequency from Inductance and Inductive Reactance" methodName="frequency_lxl" formulaImage="frequency_lxl.png">
         <description>
             Calculates frequency when inductance and inductive reactance are known.
 
@@ -47,7 +47,7 @@
         </input_parameters>
         <output outputName="Frequency" outputUnitScale="HERTZ" />
     </calculation>
-    <calculation displayName="Frequency from Capacitive Reactance" methodName="frequency_cxc" formulaImage="frequency_cxc.png">
+    <calculation displayName="Frequency from Capacitance and Capacitive Reactance" methodName="frequency_cxc" formulaImage="frequency_cxc.png">
         <description>
             Calculates frequency when capacitance and capacitive reactance are known.
 
@@ -80,7 +80,7 @@
         </input_parameters>
         <output outputName="Wavelength" outputUnitScale="METERS" />
     </calculation>
-    <calculation displayName="Capacitance from Capacitive Reactance" methodName="capacitance_fxc" formulaImage="capacitance_fxc.png">
+    <calculation displayName="Capacitance from Frequency and Capacitive Reactance" methodName="capacitance_fxc" formulaImage="capacitance_fxc.png">
         <description>
             Calculates capacitance when frequency and capacitive reactance are known.
 
@@ -97,7 +97,7 @@
         </input_parameters>
         <output outputName="Capacitance" outputUnitScale="FARADS" />
     </calculation>
-    <calculation displayName="Inductance from Inductive Reactance" methodName="inductance_fxl" formulaImage="inductance_fxl.png">
+    <calculation displayName="Inductance from Frequency and Inductive Reactance" methodName="inductance_fxl" formulaImage="inductance_fxl.png">
         <description>
             Calculates inductance when frequency and inductive reactance are known.
 
@@ -135,7 +135,7 @@
         </input_parameters>
         <output outputName="Back EMF" outputUnitScale="VOLTS" />
     </calculation>
-    <calculation displayName="Inductive Reactance from Inductance" methodName="reactance_inductive_fl" formulaImage="reactance_inductive_fl.png">
+    <calculation displayName="Inductive Reactance from Frequency and Inductance" methodName="reactance_inductive_fl" formulaImage="reactance_inductive_fl.png">
         <description>
             Calculates inductive reactance when frequency and inductance are known.
 
@@ -152,7 +152,7 @@
         </input_parameters>
         <output outputName="Inductive Reactance" outputUnitScale="OHMS" />
     </calculation>
-    <calculation displayName="Capacitive Reactance from Capacitance" methodName="reactance_capacitive_fc" formulaImage="reactance_capacitive_fc.png">
+    <calculation displayName="Capacitive Reactance from Frequency and Capacitance" methodName="reactance_capacitive_fc" formulaImage="reactance_capacitive_fc.png">
         <description>
             Calculates capacitive reactance when frequency and capacitance are known.
 
@@ -756,7 +756,7 @@
             Calculates peak to peak voltage from average voltage for AC sine waves.
 
             Input:
-            *   verage Voltage: Vav (Volts)
+            *   Average Voltage: Vav (Volts)
 
             Output:
             *   Peak-to-Peak Voltage: Vpp (Volts)
